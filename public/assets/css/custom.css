@@ -1,0 +1,303 @@
+.form-group label {
+    color: #151822;
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-control:hover {
+    box-shadow: none;
+    border-color: #969cad;
+}
+
+.swal2-modal {
+    border-radius: 0px;
+    font-size: 14px;
+}
+
+.swal2-styled {
+    border-radius: 3px !important;
+}
+
+.swal2-styled:focus {
+    border: 0px;
+    box-shadow: none;
+}
+
+.swal2-confirm {
+    background: #4CAF50 !important;
+}
+
+.swal2-confirm:hover {
+    background: #3b8c3f !important;
+}
+
+.swal2-cancel {
+    background: #F44336 !important;
+}
+
+.swal2-cancel:hover {
+    background: #d8362a !important;
+}
+
+.note-toolbar.panel-heading {
+    background: #f7f7f7;
+}
+
+/* custom datpicker */
+.datepicker {
+    padding: 5px !important;
+}
+
+.today.day {
+    background: #37A000 !important;
+    color: #FFF !important;
+    border-radius: 50%;
+}
+
+.active.day {
+    background: rgb(0, 109, 160) !important;
+    color: #FFF !important;
+    border-radius: 50%;
+}
+
+.day {
+    border-radius: 50% !important;
+}
+
+.day:hover {
+    transition: 0.25s;
+}
+
+/* custom css for table design */
+.table {
+    background: #f6f6f6;
+    border-collapse: collapse;
+    border-spacing: 0em .5em;
+    font-size: 14px;
+}
+
+.table th, .table td {
+    border: 0px solid #f1f1f1;
+    padding: 7px 10px;
+}
+
+.table th {
+    padding: 10px;
+}
+
+.table thead, .table th, .table thead th {
+    border-bottom: 0px solid #f1f1f1;
+    background: #28a745;
+    color: #fff;
+}
+
+.table tr {
+    background: #fff;
+    cursor: pointer
+}
+
+.table tr:nth-child(2n+1) {
+    background: #f6f6f6;
+}
+
+.table tr:hover {
+    background: #f1f1f1;
+    transition: 0.25s
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #e4e4e4;
+}    
+
+.table-condensed td,
+.table-condensed th {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.table-condensed th {
+    font-size: 14px;
+}
+
+.datepicker table th,
+.datepicker table td {
+    padding: 6px;
+}
+
+.form-control::placeholder {
+    color: #a9a9a9 !important;
+    font-size: 12px;
+}
+
+/* custom style of select2 */
+.select2 {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0px;
+    height: 34px;
+    border: 1px solid #DDD;
+}
+
+.bg-custom-color-violate {
+    background-color: #673AB7!important;
+}
+
+.th-color-white {
+    color: #FFF !important;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 10px !important;
+}
+
+.dataTables_filter input {
+    border: 1px solid #b3b3b3;
+    padding: 5px;
+    min-width: 200px;
+}
+
+.paginate_button {
+    background: #cacaca !important;
+    padding: 5px 10px !important;
+    border: 0px solid #DDD !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #673ab7 !important;
+    color: white !important;
+}
+
+table.dataTable thead th, table.dataTable thead td,
+table.dataTable.no-footer {
+    border: inherit;
+}   
+
+.customDataTableSelect select {
+    border: 1px solid #DDD;
+    padding: 3px 5px;
+    cursor: pointer;
+    background: #FFF
+}
+
+.dt-buttons {
+    display: inline-block;
+    position: relative;
+}
+
+.dt-button {
+    background: #DDD;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.dt-button:hover {
+    background: #007bff;
+    color: #FFF;
+    transition: 0.25s;
+}
+.dt-button.buttons-collection {
+    background: #FFF0;
+    border: 1px solid #DDD;
+}
+
+.dt-button.buttons-collection:hover {
+    color: #000;
+}
+
+.dt-button-collection {
+    position: absolute;
+    top: 32px !important;
+    right: 0px;
+    width: 125px;
+    background: #ffffff;
+    left: auto !important;
+    border: 1px solid #DDD !important;
+}
+
+
+.dt-button.button-page-length {
+    display: block !important;
+    float: none;
+    background:#b7747400;
+    width: 100%;
+    border-radius: 0px  !important;
+    border-bottom: 1px solid #DDD;
+}
+
+.dt-button.buttons-copy {
+    background: #007bff;
+    color: #FFF;
+}
+
+.dt-button.buttons-excel {
+    background: #009688;
+    color: #FFF;
+}
+
+.dt-button.buttons-csv {
+    background: #9C27B0;
+    color: #FFF;
+}
+
+.dt-button.buttons-pdf {
+    background: #F44336;
+    color: #FFF;
+}
+
+.dt-button.buttons-print {
+    background: #444444;
+    color: #FFF;
+}
+
+.dt-button.button-page-length:hover, 
+.dt-button.button-page-length.active {
+    color: #673ab7;
+}
+
+.sidebar-area::-webkit-scrollbar {
+    width: 3px;
+    display: block;
+}
+
+.sidebar-area:hover::-webkit-scrollbar {
+    display: block;
+}
+ 
+.sidebar-area::-webkit-scrollbar-track {    
+    width: 100%;
+    background: #242939;
+}
+ 
+.sidebar-area::-webkit-scrollbar-thumb {
+    width: 100%;
+    background: #576180;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    display: block;
+}
+
+:hover::-webkit-scrollbar {
+    display: block;
+}
+ 
+::-webkit-scrollbar-track {    
+    width: 100%;
+    background: #ffffff;
+}
+ 
+::-webkit-scrollbar-thumb {
+    width: 100%;
+    background: #007bff;
+    cursor: pointer;
+}
