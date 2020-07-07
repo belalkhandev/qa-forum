@@ -14,14 +14,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $role_superadmin = Role::where('name', 'super_admin')->first();
-        $role_admin = Role::where('name', 'administrator')->first();
-        $role_teacher = Role::where('name', 'teacher')->first();
-        $role_student = Role::where('name', 'student')->first();
+        $role_admin = Role::where('name', 'admin')->first();
+        $role_user = Role::where('name', 'user')->first();
         
         // Super Admin
         $superAdmin = new User();
         $superAdmin->name = 'Super Admin';
-        $superAdmin->email = 'superadmin@school.dev';
+        $superAdmin->email = 'superadmin@ks.dev';
         $superAdmin->password = bcrypt('password');
         $superAdmin->save();
         $superAdmin->attachRole($role_superadmin);
@@ -29,26 +28,18 @@ class UserTableSeeder extends Seeder
         // Admin
         $admin = new User();
         $admin->name = 'Administrator';
-        $admin->email = 'admin@school.dev';
+        $admin->email = 'admin@ks.dev';
         $admin->password = bcrypt('password');
         $admin->save();
         $admin->attachRole($role_admin);
 
-        // Teacher
+        // User
         $teacher = new User();
-        $teacher->name = 'Teacher';
-        $teacher->email = 'teacher@school.dev';
+        $teacher->name = 'User';
+        $teacher->email = 'user@ks.dev';
         $teacher->password = bcrypt('password');
         $teacher->save();
-        $teacher->attachRole($role_teacher);
-
-        // Student
-        $student = new User();
-        $student->name = 'student';
-        $student->email = 'student@school.dev';
-        $student->password = bcrypt('password');
-        $student->save();
-        $student->attachRole($role_student);
+        $teacher->attachRole($role_user);
         
         
 

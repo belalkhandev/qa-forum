@@ -8,7 +8,7 @@
         <aside class="sidebar-area">
             <div class="logo">
                 <a href="{{ route('dashboard') }}">
-                    <h1>Academic Management</h1>
+                    <h1>Knowledge Sharing</h1>
                 </a>
             </div>
 
