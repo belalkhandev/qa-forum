@@ -1,69 +1,38 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+    <!-- POST -->
+    
+    <div class="post">
+        <div class="wrap-ut pull-left">
+            <div class="userinfo pull-left">
+                <div class="avatar">
+                    <img src="{{ asset('frontend/assets/img/avatar.jpg') }}" alt="" />
+                    <div class="status green">&nbsp;</div>
+                </div>
 
-<!-- slider area -->
-    <section class="welcome-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="welcome-slides owl-carousel" id="welcomeSlider">
-                        <div class="single-slide">
-                            <img src="{{ asset('frontend/assets/images/slider-1.jpg') }}" alt="">
-                            <!-- <div class="slide-caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas facere aspernatur adipisci dolore, dolor nam consectetur! Inventore aliquam natus similique!</p>
-                            </div> -->
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{ asset('frontend/assets/images/slider-1.jpg') }}" alt="">
-                            <!-- <div class="slide-caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas facere aspernatur adipisci dolore, dolor nam consectetur! Inventore aliquam natus similique!</p>
-                            </div> -->
-                        </div>
-                        <div class="single-slide">
-                            <img src="{{ asset('frontend/assets/images/slider-1.jpg') }}" alt="">
-                            <!-- <div class="slide-caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas facere aspernatur adipisci dolore, dolor nam consectetur! Inventore aliquam natus similique!</p>
-                            </div> -->
-                        </div>
-                    </div>
+                <div class="icons">
+                    <img src="{{ asset('frontend/assets/img/icon1.jpg') }}" alt="" /><img src="{{ asset('frontend/assets/img/icon4.jpg') }}" alt="" />
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- maincontent area -->
-    <section class="main-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="main-content">
-                        <div class="welcome-content">
-                            <div class="section-title">
-                                <h2>WELCOME TO LEWIS COURT HIGH SCHOOL</h2>
-                                <p>A message from the principal</p>
-                            </div>
-                            <div class="section-content">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <img src="{{ asset('frontend/assets/images/sks.jpg') }}" alt="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo, et reiciendis a explicabo corrupti mollitia quam molestiae maiores nobis.</p>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo, et reiciendis a explicabo corrupti mollitia quam molestiae maiores nobis.</p>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo, et reiciendis a explicabo corrupti mollitia quam molestiae maiores nobis.</p>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo, et reiciendis a explicabo corrupti mollitia quam molestiae maiores nobis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores accusamus voluptate totam nemo deserunt, quas ratione cumque laboriosam necessitatibus. Dolores et ea, expedita repellat ipsum minus enim necessitatibus debitis ipsa nemo cumque eum quas suscipit corrupti error quidem officiis cum sint nam officia dolorum illum ullam rerum. Obcaecati, vitae dicta?</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    @include('frontend.partials._sidebar')
-                </div>
+            <div class="posttext pull-left">
+                <h2><a href="02_topic.html">10 Kids Unaware of Their Halloween Costume</a></h2>
+                <p>It's one thing to subject yourself to a Halloween costume mishap because, hey, that's your prerogative.</p>
             </div>
+            <div class="clearfix"></div>
         </div>
-    </section>
+        <div class="postinfo pull-left">
+            <div class="comments">
+                <div class="commentbg">
+                    560
+                    <div class="mark"></div>
+                </div>
 
+            </div>
+            <div class="views"><i class="fa fa-eye"></i> 1,568</div>
+            <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
+        </div>
+        <div class="clearfix"></div>
+    </div><!-- POST -->
+    
 @endsection

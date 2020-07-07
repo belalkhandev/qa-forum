@@ -1,37 +1,21 @@
-<div class="sidebar-item">
-    <div class="sidebar-section-title">
-        <h3>Latest Notice</h3>
-    </div>
-    <div class="sidebar-section-content">
-        @if($notices)
-            <div class="notice-items">
-                @foreach ($notices as $key => $notice)
-                    <div class="notice-item">
-                        <p><a href="{{ route('frontend.notice.show', $notice->id) }}">{{ $notice->title }}</a></p>
-                        <div class="publish_date"><i class="fas fa-calendar-alt"></i> {{ user_formatted_date($notice->publish_date) }}</div>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    </div>
-</div>
- 
-<div class="sidebar-item">
-    <div class="sidebar-section-title">
-        <h3>Pricipal</h3>
-    </div>
-    <div class="sidebar-section-content">
-        <div class="message-item text-center">
-            <div class="avatar">
-                <img src="{{ asset('frontend/assets/images/unnamed.png') }}" alt="">
-            </div>
-            <div class="avatar-title">
-                <h3>Md. Muhib Hossain</h3>
-            </div>
-            <div class="avatar-link">
-                <a href="#" class="btn btn-sm btn-danger">Read More</a>
-            </div>
+<div class="col-lg-4 col-md-4">
+
+    <!-- -->
+    <div class="sidebarblock">
+        <h3>Categories</h3>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <ul class="cats">
+                <li><a href="#">Trading for Money <span class="badge pull-right">20</span></a></li>
+                <li><a href="#">Vault Keys Giveway <span class="badge pull-right">10</span></a></li>
+                <li><a href="#">Misc Guns Locations <span class="badge pull-right">50</span></a></li>
+                <li><a href="#">Looking for Players <span class="badge pull-right">36</span></a></li>
+                <li><a href="#">Stupid Bugs &amp; Solves <span class="badge pull-right">41</span></a></li>
+                <li><a href="#">Video &amp; Audio Drivers <span class="badge pull-right">11</span></a></li>
+                <li><a href="#">2K Official Forums <span class="badge pull-right">5</span></a></li>
+            </ul>
         </div>
     </div>
-</div>   
- 
+
+
+</div>
