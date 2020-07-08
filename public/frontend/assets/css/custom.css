@@ -1224,3 +1224,21 @@ a.down:hover {
         padding: 0;
     }
 }
+
+.header-nav ul {
+    text-align: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav ul li {
+    display: inline-block;
+}
+
+.header-nav ul li a {
+    display: block;
+    margin-left: 15px;
+    padding: 10px 0px;
+    font-weight: 600;
+}
