@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="{{ asset('frontend/assets/img/logo.jpg') }}" alt=""  /></a></div>
-            <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
+            <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights {{ Carbon\Carbon::now()->year }}, Knowledge Sharing </div>
             <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
                 <ul class="socialicons">
                     <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>

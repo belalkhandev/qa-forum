@@ -9,6 +9,7 @@
 
         <!-- Bootstrap -->
         <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
 
         <!-- Custom -->
         <link href="{{ asset('frontend/assets/css/custom.css') }}" rel="stylesheet">
@@ -58,8 +59,10 @@
             @include('frontend.partials._footer')
         </div>
 
-        <!-- get jQuery from the google apis -->
-        <script type="text/javascript" src="{{ asset('frontend/assets/js/jquery.js') }}"></script>
+        <!-- get jQuery from the google apis -->        
+        <script type="text/javascript" src="{{ asset('frontend/assets/js/jquery-3.5.1.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('assets/js/submitter.js') }}"></script>
  
 
         <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
@@ -67,7 +70,6 @@
         <script type="text/javascript" src="{{ asset('frontend/assets/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 
         <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/js/submitter.js') }}"></script>
 
 
         <!-- LOOK THE DOCUMENTATION FOR MORE INFORMATIONS -->
