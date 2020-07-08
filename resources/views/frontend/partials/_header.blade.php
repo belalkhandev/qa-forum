@@ -16,7 +16,7 @@
 <div class="headernav">
     <div class="container">
         <div class="row">
-            <div class="col-lg-1 col-xs-3 col-sm-2 col-md-2 logo "><a href="index.html"><img src="{{ asset('frontend/assets/img/logo.jpg') }}" alt=""  /></a></div>
+            <div class="col-lg-1 col-xs-3 col-sm-2 col-md-2 logo "><a href="{{ route('fr.home') }}"><img src="{{ asset('frontend/assets/img/logo.jpg') }}" alt=""  /></a></div>
             <div class="col-lg-5 search hidden-xs hidden-sm col-md-4">
                 <div class="wrap">
                     <form action="#" method="post" class="form">
@@ -51,7 +51,7 @@
                     <div class="header-nav">
                         <ul>
                             <li><a href="">Sign In</a></li>
-                            <li><a href="">Create Account</a></li>
+                            <li><a href="{{ route('fr.create-account') }}">Create Account</a></li>
                         </ul>
                     </div>
                 @endif

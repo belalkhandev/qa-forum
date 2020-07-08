@@ -438,11 +438,8 @@ td.chbox {
 }
 
 .post .posttext {
-    width: 85%;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 15px;
-
+    width: 100%;
+    padding: 30px;
     color: #989c9e;
     font-size: 14px;
     font-family: 'Open Sans Light', sans-serif;   
@@ -732,6 +729,7 @@ a.down:hover {
 /*--- #03_new_topic.html - NEW TOPIC ---*/
 
 .newtopic input[type=text],
+.newtopic input[type=email],
 .newtopic input[type=password]
 {
     border-radius: 2px;
@@ -742,7 +740,7 @@ a.down:hover {
     font-size: 14px;
     color: #989c9e;
     font-family: 'Open Sans Light', sans-serif; 
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     height: 50px;
 }
 

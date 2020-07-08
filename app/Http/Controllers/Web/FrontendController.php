@@ -18,18 +18,14 @@ class FrontendController extends Controller
         return view('frontend.index')->with(array_merge($this->data, $data));
     }
 
-    public function about()
+    public function register()
     {
         $data = [
-            'page_title' => 'About US',
-            'page_header' => 'About US',
-            'notices' => Notice::orderBy('publish_date', 'desc')
-                                ->orderBy('id', 'desc')
-                                ->whereDate('publish_date', '<=', Carbon::now())
-                                ->get()->take(15)
+            'page_title' => 'Create account',
+            'page_header' => 'Create account',
         ];
 
-        return view('frontend.about')->with(array_merge($this->data, $data));
+        return view('frontend.register')->with(array_merge($this->data, $data));
     }
 
     public function noticeList()

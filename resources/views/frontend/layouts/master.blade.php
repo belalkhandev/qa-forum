@@ -67,6 +67,7 @@
         <script type="text/javascript" src="{{ asset('frontend/assets/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 
         <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/submitter.js') }}"></script>
 
 
         <!-- LOOK THE DOCUMENTATION FOR MORE INFORMATIONS -->
