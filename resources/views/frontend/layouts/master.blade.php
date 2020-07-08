@@ -90,6 +90,8 @@
 
         </script>
 
+        @stack('footer-scripts')
+
         <!-- END REVOLUTION SLIDER -->
     </body>
 

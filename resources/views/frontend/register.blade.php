@@ -3,7 +3,7 @@
 @section('content')
     <!-- POST -->
     <div class="post">
-        {!! Form::open(['route' => 'fr.home', 'class' => 'form newtopic']) !!}        
+        {!! Form::open(['route' => 'fr.register', 'class' => 'form newtopic']) !!}        
             <div class="postinfotop">
                 <h2>Create New Account</h2>
             </div>
@@ -71,7 +71,7 @@
                 <div class="pull-right postreply">
                     <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
                     <div class="pull-left">
-                        <button type="submit" class="btn btn-primary" onclick="submit_form(this, event)">Sign Up</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" onclick="submit_form(this, event)" disabled>Sign Up</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -83,3 +83,21 @@
             {!! Form::close() !!}
     </div><!-- POST -->
 @endsection
+
+@push('footer-scripts')
+    <script>
+
+        jQuery(document).ready(function() {
+            "use strict";
+                
+            $(document).on('click', '#note', function() {
+                if(this.checked) {
+                    $('#submitBtn').prop('disabled', false);
+                } else {
+                    $('#submitBtn').prop('disabled', true);
+                }
+            })
+
+        });	//ready
+    </script>
+@endpush

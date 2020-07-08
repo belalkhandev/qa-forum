@@ -28,6 +28,20 @@ class FrontendController extends Controller
         return view('frontend.register')->with(array_merge($this->data, $data));
     }
 
+    public function storeRegister(Request $request)
+    {
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|unique:users,email',
+            'username' => 'required|unique:users,username',
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required'
+        ], [
+            'password_confirmation.required' => 'Confirm password required'
+        ]);
+    }
+
     public function noticeList()
     {
         $data = [
