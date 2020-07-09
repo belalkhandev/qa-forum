@@ -27,6 +27,25 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('/', 'DashboardController@index')->name('admin');
             Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+            //category
+            Route::prefix('category')->group(function () {
+                Route::get('/list', 'Admin\CategoryController@index')->name('category.list');
+                Route::get('/create', 'Admin\CategoryController@create')->name('category.create');
+                Route::post('/create', 'Admin\CategoryController@store')->name('category.store');
+                Route::get('/edit/{id}', 'Admin\CategoryController@edit')->name('category.edit');
+                Route::post('/edit/{id}', 'Admin\CategoryController@update')->name('category.update');
+                Route::delete('/destroy/{id}', 'Admin\CategoryController@destroy')->name('category.destroy');
+            });
+
+            //Sub Cateogyr
+            Route::prefix('sub-category')->group(function () {
+                Route::get('/list', 'Admin\SubCategoryController@index')->name('sub-category.list');
+                Route::get('/create', 'Admin\SubCategoryController@create')->name('sub-category.create');
+                Route::post('/create', 'Admin\SubCategoryController@store')->name('sub-category.store');
+                Route::get('/edit/{id}', 'Admin\SubCategoryController@edit')->name('sub-category.edit');
+                Route::post('/edit/{id}', 'Admin\SubCategoryController@update')->name('sub-category.update');
+                Route::delete('/destroy/{id}', 'Admin\SubCategoryController@destroy')->name('sub-category.destroy');
+            });
             
         });
 

@@ -18,4 +18,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user-logout', 'Web\Auth\LoginController@logout')->name('fr.logout');
 
+    Route::get('new-topic', 'Web\TopicController@newTopic')->name('fr.newTopic');;
+    Route::post('new-topic', 'Web\TopicController@storeNewTopic')->name('fr.newTopic.store');;
+
 });

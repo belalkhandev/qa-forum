@@ -27,10 +27,8 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xs-12 col-sm-5 col-md-6 avt">
-                <div class="stnt pull-left">                            
-                    <form action="http://forum.azyrusthemes.com/03_new_topic.html" method="post" class="form">
-                        <button class="btn btn-primary">Start New Topic</button>
-                    </form>
+                <div class="stnt pull-left">
+                    <a href="{{ route('fr.newTopic') }}" class="btn btn-primary">Start New Topic</a>
                 </div>                
 
                 @if (Auth::user())

@@ -11,5 +11,19 @@
                 <li><a href="#">dropdown menu 2</a></li>
             </ul>
         </li>
+
+        {{--   for category    --}}
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="fab fa-accusoft"></i>
+                <span>Category</span>
+                <i class="fas fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('category.list') }}">Category List</a></li>
+                <li><a href="{{ route('category.create') }}">Category Create</a></li>
+                <li><a href="{{ route('sub-category.list') }}">Sub Category List</a></li>
+                <li><a href="{{ route('sub-category.create') }}">Sub Category Create</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

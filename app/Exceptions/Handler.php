@@ -72,7 +72,7 @@ class Handler extends ExceptionHandler
             break;
 
           default:
-            $login = 'frontend.login-register';
+            $login = 'fr.login-account';
             break;
         }
         
