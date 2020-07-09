@@ -74,7 +74,6 @@
     transition: 0.25s;
 }
 
-/* custom css for table design */
 .table {
     background: #f6f6f6;
     border-collapse: collapse;
@@ -93,13 +92,12 @@
 
 .table thead, .table th, .table thead th {
     border-bottom: 0px solid #f1f1f1;
-    background: #28a745;
+    background: #15c39a;
     color: #fff;
 }
 
 .table tr {
     background: #fff;
-    cursor: pointer
 }
 
 .table tr:nth-child(2n+1) {
@@ -113,7 +111,7 @@
 
 .table-bordered th, .table-bordered td {
     border: 1px solid #e4e4e4;
-}    
+}
 
 .table-condensed td,
 .table-condensed th {

@@ -59,7 +59,7 @@
                             <div class="user-nav">
                                 <ul>
                                     <li><a href=""><i class="fas fa-user"></i> <span>Profile</span></a></li>
-                                    <li><a href="{{ route('change-password') }}"><i class="fas fa-key"></i> <span>Change Password</span></a></li>
+                                    <li><a href=""><i class="fas fa-key"></i> <span>Change Password</span></a></li>
                                     <li><a href=""><i class="fas fa-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="{{ route('logout') }}"><i class="fas fa-lock"></i> <span>Logout</span></a></li>
                                 </ul>

@@ -5,6 +5,7 @@ if (!function_exists('getGenderType')) {
         $genders = [
             'male' => 'Male',
             'female' => 'Female',
+            'other' => 'Others',
         ];
 
         return $genders;
@@ -17,8 +18,8 @@ if (!function_exists('getMaritalStatus')) {
     {
 
         $status = [
-            'Married' => 'Married',
-            'Unmarried' => 'Unmarried',
+            'married' => 'Married',
+            'unmarried' => 'Unmarried',
         ];
 
         return $status;
@@ -136,6 +137,39 @@ if (!function_exists('getDaysList')) {
     }
 }
 
+
+if (!function_exists('getEducationLevelList')) {
+    function getEducationLevelList() {
+
+        $levels = [
+            'bsc' => 'Bachelor of Science',
+            'diploma' => 'Diploma',
+            'ssc' => 'Secondary School Certificate',
+        ];
+
+        return $levels;
+    }
+}
+
+if (!function_exists('getResultTypeList')) {
+    function getResultTypeList() {
+
+        $types = [
+            'first_division' => 'First Division/Class',
+            'second_division' => 'Second Division/Class',
+            'third_division' => 'Third Division/Class',
+            'grade' => 'Grade',
+            'appeared' => 'Appeared',
+            'enrolled' => 'Enrolled',
+            'not_mention' => 'Do Not Mention',
+            'awarded' => 'Awarded',
+            'pass' => 'Pass',
+        ];
+
+        return $types;
+    }
+}
+
 if (!function_exists('styleStatus')) {
     function styleStatus($value)
     {
@@ -225,6 +259,9 @@ if (!function_exists('user_formatted_date')) {
 
 if (!function_exists('datepicker_formatted_date')) {
     function datepicker_formatted_date($value = null) {
+        if (!$value) {
+            return '';
+        }
         
         $date = date('d-m-Y', strtotime($value));
 

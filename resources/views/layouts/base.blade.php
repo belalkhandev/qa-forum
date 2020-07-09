@@ -9,18 +9,18 @@
     <title>@yield('page_title', $page_title)</title>
 
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png" sizes="16x16">
-    
+
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/select2.min.css') }}">
     @stack('header-styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">    
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     @stack('header-scripts')
 <body>
-    
+
     @yield('base.content')
 
     <!-- jquery & jqery plugins -->

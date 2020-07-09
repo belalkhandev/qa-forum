@@ -5,12 +5,17 @@
 | Frontend Routes
 |--------------------------------------------------------------------------
 */
+Route::get('/', 'Web\FrontendController@index')->name('fr.home');
+Route::get('/under-construction', 'Web\FrontendController@underConstruction')->name('fr.uc');
 
-Route::namespace('Web')->group(function () {
-    Route::get('/', 'FrontendController@index')->name('fr.home');
-    Route::get('/under-construction', 'FrontendController@uncerConstruction')->name('frontend.under.construction');
+//login-register
+Route::get('signin', 'Web\Auth\LoginController@showLoginForm')->name('fr.login-account');
+Route::post('signin', 'Web\Auth\LoginController@login')->name('fr.login');
+Route::get('create-account', 'Web\Auth\RegisterController@showRegisterForm')->name('fr.create-account');
+Route::post('create-account', 'Web\Auth\RegisterController@store')->name('fr.register');
 
-    Route::get('/create-account', 'FrontendController@register')->name('fr.create-account');
-    Route::post('/create-account', 'FrontendController@storeRegister')->name('fr.register');
-    
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('user-logout', 'Web\Auth\LoginController@logout')->name('fr.logout');
+
 });

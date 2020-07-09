@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     /**
@@ -76,12 +76,15 @@ class LoginController extends Controller
         $this->loginValidation($request);
 
         //attempt login with usename or email
-        Auth::attempt([$this->username() => $request->email, 'password' => $request->password]);
+        Auth::guard('admin')->attempt([$this->username() => $request->email, 'password' => $request->password]);
 
         //was any of those correct ?
-        if (Auth::check()) {
-            //send them where they are going 
-            return redirect()->intended('/admin');
+        if (Auth::guard('admin')->check()) {
+            if (Auth::guard('admin')->user()->hasRoles(['user'])) {
+                Auth::guard('admin')->logout();
+            } else {
+                return redirect()->intended('/admin');
+            }
         }
 
         //Nope, something wrong during authentication 
@@ -93,7 +96,18 @@ class LoginController extends Controller
     //custom-logout
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
+
         return redirect('/login');
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

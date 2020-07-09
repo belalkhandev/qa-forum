@@ -20,8 +20,9 @@ class PermissionTableSeeder extends Seeder
 
         $perm2 = new Permission();
         $perm2->name = 'manage_user'; // for super admin
-        $perm2->display_name = 'Manage Modules';
-        $perm2->description = 'can manage user module';
+        $perm2->display_name = 'Manage user';
+        $perm2->description = 'Can manage user';
         $perm2->save();
+        
     }
 }

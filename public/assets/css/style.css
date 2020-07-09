@@ -51,9 +51,11 @@ body {
 }
 
 .logo {
-    margin-bottom: 25px;
     text-align: center;
-    background: #1f2433;
+    background: #1f2433;    
+    position: fixed;
+    width: 250px;
+    z-index: 999;
 }
 
 .logo a h1 {
@@ -75,6 +77,10 @@ body {
     overflow: hidden;
     margin-left: 250px;
     transition: 0.25s;
+}
+
+.navigation-menu {
+    margin-top: 70px;
 }
 
 .nav-title {
@@ -198,20 +204,6 @@ body {
 
 .sidebar-menu .treeview-menu>li.active>a {
     color: #01CB63;
-}
-
-.sidebar-menu li ul {
-    position: relative;
-}
-
-.sidebar-menu li ul::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: #01cb63;
-    content: ''
 }
 
 .sidebar-menu a .fa-angle-right {
@@ -395,7 +387,7 @@ body {
 }
 
 .header-nav .navbar-nav .dropdown.show .nav-link {
-    color: #FF9800;
+    color: #15c39a;
 }
 
 .search-form {
@@ -691,7 +683,6 @@ body {
 
 .tab-box {
     background: #FFFFFF;
-    margin-bottom: 20px;
 }
 
 .tab-box-header {
@@ -703,7 +694,7 @@ body {
     align-items: center;
 }
 
-.tab-box-header-title {
+.tabl-box-header-title {
     font-size: 18px;
     color: #000;
 }
@@ -899,10 +890,51 @@ body {
     color: #FFF;
 }
 
-.note {
-    background: #ffff8e;
+.action-dropdown {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.action-dropdown-items {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    min-width: 130px;
+    background: #fff;
+    padding: 5px;
+    font-size: 13px;
+    box-shadow: 0px 0px 1px #000;
+    display: none;
+    z-index: 999;
+}
+
+.action-dropdown:hover .action-dropdown-items {
+    display: block;
+}
+
+.action-dropdown-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.action-dropdown-items ul li{
+    border-bottom: 1px dotted #ddd;
+}
+
+.action-dropdown-items ul li:last-child{
+    border-bottom: 0px dotted #ddd;
+}
+
+.action-dropdown-items ul li a {
+    display: block;
     padding: 3px 5px;
-    color: #2d2d2d;
-    font-size: 12px;
-    margin-bottom: 10px;
+    color: #656565;
+    text-decoration: none
+}
+
+.action-dropdown-items ul li:hover a {
+    color: #15c39a;
 }

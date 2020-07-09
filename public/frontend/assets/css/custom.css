@@ -438,12 +438,20 @@ td.chbox {
 }
 
 .post .posttext {
-    width: 100%;
-    padding: 30px;
+    width: 85%;
+    width: 85%;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 15px;
     color: #989c9e;
     font-size: 14px;
     font-family: 'Open Sans Light', sans-serif;   
     line-height: 25px;
+}
+
+.post .posttext.account-form {
+    width: 100%;
+    padding: 30px;
 }
 
 .post .postinfo {

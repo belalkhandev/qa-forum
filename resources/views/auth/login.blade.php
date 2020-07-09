@@ -11,17 +11,13 @@
             <div class="form-group">
                 <input type="text" placeholder="Email/Username" name="email" class="form-control" value="{{ old('email') }}">
                 @error('email')
-                    <span class="text-danger">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
                 <input type="password" placeholder="Password" name="password" class="form-control">
                 @error('password')
-                    <span class="text-danger">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">

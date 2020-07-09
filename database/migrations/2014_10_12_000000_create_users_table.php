@@ -20,10 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique()->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('status')->default(1)->comment('0=Inactive, 1=Active');
+            $table->boolean('status')->default(true);
             $table->timestamps();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
         });
     }
 

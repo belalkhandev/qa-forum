@@ -33,12 +33,13 @@ class RoleTableSeeder extends Seeder
         $admin->save();
         $admin->attachPermissions($perm_admin);
 
-        // User Role
+        // Teacher Role
         $user = new Role();
         $user->name = 'user';
         $user->display_name = 'User';
-        $user->description = 'Has all pablic user';
+        $user->description = 'Has all permissions for user';
         $user->save();
         $user->attachPermissions($perm_user);
+
     }
 }

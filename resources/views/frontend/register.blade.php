@@ -11,7 +11,7 @@
             <!-- acc section -->
             <div class="accsection">
                 <div class="topwrap">
-                    <div class="posttext">
+                    <div class="posttext account-form">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">

@@ -31,26 +31,26 @@
                     <form action="http://forum.azyrusthemes.com/03_new_topic.html" method="post" class="form">
                         <button class="btn btn-primary">Start New Topic</button>
                     </form>
-                </div>
+                </div>                
 
-                
-
-                @if (false)
+                @if (Auth::user())
                     <div class="avatar pull-right dropdown">
-                        <a data-toggle="dropdown" href="#"><img src="{{ asset('frontend/assets/img/avatar.jpg') }}" alt="" /></a> <b class="caret"></b>
+                        <a data-toggle="dropdown" href="#">
+                            <span>{{ Auth::user()->name }}</span>
+                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /></a> 
+                            <b class="caret"></b>
                         <div class="status green">&nbsp;</div>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-2" href="#">Inbox</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-3" href="{{ route('fr.logout') }}">Log Out</a></li>
                         </ul>
                     </div>                    
                     <div class="env pull-right"><i class="fa fa-bell"></i></div>
                     @else 
                     <div class="header-nav">
                         <ul>
-                            <li><a href="">Sign In</a></li>
+                            <li><a href="{{ route('fr.login-account') }}">Sign In</a></li>
                             <li><a href="{{ route('fr.create-account') }}">Create Account</a></li>
                         </ul>
                     </div>

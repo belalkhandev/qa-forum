@@ -16,21 +16,20 @@
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function () {
-    
-    Route::namespace('Web')->group(function () {         
+Route::middleware(['auth:admin'])->group(function () {
 
+    Route::get('/admin-home', 'AdminController@index')->name('admin.home');
+
+    Route::namespace('Web')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', 'DashboardController@index')->name('admin');
             Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-            Route::get('/home', 'DashboardController@index')->name('home');
-            
-            Route::get('/change-password', 'UserController@changePassword')->name('change-password');
-            Route::post('/change-password', 'UserController@updatePassword')->name('update-password');
 
+            
         });
 
-        
     });
+
 });

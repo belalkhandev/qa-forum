@@ -20,28 +20,25 @@ class UserTableSeeder extends Seeder
         // Super Admin
         $superAdmin = new User();
         $superAdmin->name = 'Super Admin';
-        $superAdmin->email = 'superadmin@ks.dev';
+        $superAdmin->email = 'superadmin@qaforum.dev';
         $superAdmin->password = bcrypt('password');
         $superAdmin->save();
         $superAdmin->attachRole($role_superadmin);
         
         // Admin
         $admin = new User();
-        $admin->name = 'Administrator';
-        $admin->email = 'admin@ks.dev';
+        $admin->name = 'Admin';
+        $admin->email = 'admin@qaforum.dev';
         $admin->password = bcrypt('password');
         $admin->save();
         $admin->attachRole($role_admin);
 
-        // User
-        $teacher = new User();
-        $teacher->name = 'User';
-        $teacher->email = 'user@ks.dev';
-        $teacher->password = bcrypt('password');
-        $teacher->save();
-        $teacher->attachRole($role_user);
-        
-        
-
+        // Teacher
+        $employee = new User();
+        $employee->name = 'John';
+        $employee->email = 'john@qaforum.dev';
+        $employee->password = bcrypt('password');
+        $employee->save();
+        $employee->attachRole($role_user);
     }
 }

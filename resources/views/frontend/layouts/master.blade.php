@@ -5,7 +5,7 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Forum :: Home Page</title>
+        <title>@yield('page_title', $page_title)</title>
 
         <!-- Bootstrap -->
         <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">

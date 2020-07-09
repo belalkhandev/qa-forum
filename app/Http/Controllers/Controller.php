@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -25,8 +24,8 @@ class Controller extends BaseController
     {
         // Default variables
         $this->data = [
-            'page_title' => 'Academic Management System',
-            'page_header' => 'Dashboard',
+            'page_title' => 'Knowledge sharing',
+            'page_header' => 'Knowledge sharing',
         ];
     }
 }
