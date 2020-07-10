@@ -1273,15 +1273,21 @@ a.down:hover {
     color: #000;
 }
 
-.topic_vote {
+.topic_vote, 
+.answer_vote {
     cursor: pointer;
 }
 
-.topic_vote:hover {
+.topic_vote:hover, 
+.answer_vote:hover{
     color: #000;
 }
 
 input[name="topic_title"] {
     font-weight: bold;
     color: #000 !important;
+}
+
+.post.answerpost {
+    margin-left: 20px;
 }

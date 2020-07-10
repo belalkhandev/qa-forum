@@ -25,8 +25,15 @@
         <div class="postinfobot">
 
             <div class="likeblock pull-left">
-                <span class="up topic_vote" id="topic_like" data-topicid="{{ $topic->id }}" data-vote="1"><i class="fa fa-thumbs-o-up"></i><span class="topic_like_count">{{ $like }}</span></span>
-                <span class="down topic_vote" id="topic_dislike" data-topicid="{{ $topic->id }}" data-vote="0"><i class="fa fa-thumbs-o-down" ></i><span class="topic_dislike_count">{{ $dislike }}</span></span>
+                <span class="up topic_vote" id="topic_like" data-topicid="{{ $topic->id }}" data-vote="1">
+                    <i class="fa fa-thumbs-o-up"></i>
+                    <span class="topic_like_count">{{ $like }}</span>
+                </span>
+
+                <span class="down topic_vote" id="topic_dislike" data-topicid="{{ $topic->id }}" data-vote="0">
+                    <i class="fa fa-thumbs-o-down" ></i>
+                    <span class="topic_dislike_count">{{ $dislike }}</span>
+                </span>
             </div>
 
             <div class="prev pull-left">
@@ -44,8 +51,7 @@
 
     @if($topic->answers)
         @foreach ($topic->answers as $answer)
-            <!-- POST -->
-            <div class="post">
+            <div class="post answerpost">
                 <div class="topwrap">
                     <div class="userinfo pull-left">
                         <div class="avatar">
@@ -65,8 +71,15 @@
                 <div class="postinfobot">
 
                     <div class="likeblock pull-left">
-                        <a href="#" class="up"><i class="fa fa-thumbs-o-up"></i>{{ count($answer->likes) }}</a>
-                        <a href="#" class="down"><i class="fa fa-thumbs-o-down"></i>{{ count($answer->dislikes) }}</a>
+                        <span class="up answer_vote" data-answerid="{{ $answer->id }}" data-answer_vote="1">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="answer_like_count">{{ count($answer->likes) }}</span>
+                        </span>
+
+                        <span class="down answer_vote" data-answerid="{{ $answer->id }}" data-answer_vote="0">
+                            <i class="fa fa-thumbs-o-down"></i>
+                            <span class="answer_dislike_count">{{ count($answer->dislikes) }}</span>
+                        </span>
                     </div>
 
                     <div class="prev pull-left">                                        
@@ -77,7 +90,7 @@
 
                     <div class="clearfix"></div>
                 </div>
-            </div><!-- POST -->
+            </div>
         @endforeach
 
     @endif
@@ -147,7 +160,7 @@
                 }
             })
 
-            //onclick like question
+            //onclick vote question
             $(document).on('click', '.topic_vote', function () {
                 let topic_id = $(this).data('topicid');
                 let vote = $(this).data('vote');
@@ -181,11 +194,6 @@
                             } else if (res.statusCode == 409) {
                                 $('.topic_like_count').html(res.data.likes);
                                 $('.topic_dislike_count').html(res.data.dislikes);
-                                Toast.fire({
-                                    type: 'warning',
-                                    title: 'Already Vote',
-                                    text: res.message,
-                                })
                             }
                         }
 
@@ -197,7 +205,52 @@
             });
             
 
-            //onclick like answer
+            //onclick vote answer
+            $(document).on('click', '.answer_vote', function () {
+                let answer_id = $(this).data('answerid');
+                let vote = $(this).data('answer_vote');
+                let _self = $(this);
+                $.ajax("{{ route('fr.answer-vote') }}", {
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        answer_id: answer_id,
+                        vote: vote,
+                    },
+                    beforeSend: function(xhr) {
+                        
+                    },
+                    success: function(res, status, xhr) {
+                        console.log(res.data);
+                        
+                        if (status == 'success') {
+                            if (res.statusCode == 401) {
+                                Toast.fire({
+                                    type: 'warning',
+                                    title: 'Unauthorized:',
+                                    text: res.message,
+                                });
+                            } else if (res.statusCode == 200) {
+                                _self.children('.answer_like_count').html(res.data.likes);
+                                _self.children('.answer_dislike_count').html(res.data.dislikes);
+
+                                Toast.fire({
+                                    type: 'success',
+                                    title: 'We Appreciate',
+                                    text: res.message,
+                                })
+                            } else if (res.statusCode == 409) {
+                                _self.children('.answer_like_count').html(res.data.likes);
+                                _self.children('.answer_dislike_count').html(res.data.dislikes);
+                            }
+                        }
+
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        // on error response
+                    }
+                });
+            });
 
 
             $(document).on('change', '#category', function() {

@@ -33,3 +33,6 @@ Route::get('topics/category/{id}', 'Web\TopicController@categoryTopic')->name('f
 // topic vote
 Route::post('/topic-vote', 'Web\VoteController@topicVote')->name('fr.topic-vote');
 
+// answer vote
+Route::post('/answer-vote', 'Web\VoteController@answerVote')->name('fr.answer-vote');
+
