@@ -25,8 +25,8 @@
         <div class="postinfobot">
 
             <div class="likeblock pull-left">
-                <a href="#" class="up"><i class="fa fa-thumbs-o-up"></i>{{ $like }}</a>
-                <a href="#" class="down"><i class="fa fa-thumbs-o-down"></i>{{ $dislike }}</a>
+                <span class="up topic_vote" id="topic_like" data-topicid="{{ $topic->id }}" data-vote="1"><i class="fa fa-thumbs-o-up"></i><span class="topic_like_count">{{ $like }}</span></span>
+                <span class="down topic_vote" id="topic_dislike" data-topicid="{{ $topic->id }}" data-vote="0"><i class="fa fa-thumbs-o-down" ></i><span class="topic_dislike_count">{{ $dislike }}</span></span>
             </div>
 
             <div class="prev pull-left">
@@ -65,21 +65,15 @@
                 <div class="postinfobot">
 
                     <div class="likeblock pull-left">
-                        <a href="#" class="up"><i class="fa fa-thumbs-o-up"></i>55</a>
-                        <a href="#" class="down"><i class="fa fa-thumbs-o-down"></i>12</a>
+                        <a href="#" class="up"><i class="fa fa-thumbs-o-up"></i>{{ count($answer->likes) }}</a>
+                        <a href="#" class="down"><i class="fa fa-thumbs-o-down"></i>{{ count($answer->dislikes) }}</a>
                     </div>
 
                     <div class="prev pull-left">                                        
                         <a href="#"><i class="fa fa-reply"></i></a>
                     </div>
 
-                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : 20 Nov @ 9:50am</div>
-
-                    <div class="next pull-right">                                        
-                        <a href="#"><i class="fa fa-share"></i></a>
-
-                        <a href="#"><i class="fa fa-flag"></i></a>
-                    </div>
+                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : {{ user_formatted_datetime($answer->created_at) }}</div>
 
                     <div class="clearfix"></div>
                 </div>
@@ -129,6 +123,8 @@
                 </div>
             {!! Form::close() !!}
         </div><!-- POST -->
+        @else 
+        <h3 class="post-section-title">To replay your answer please <a class="btn btn-sm btn-danger" href="{{ route('fr.login-account') }}">Sign In</a></h3>
     @endif
 
 @endsection
@@ -150,6 +146,50 @@
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             })
+
+            //onclick like question
+            $(document).on('click', '.topic_vote', function () {
+                let topic_id = $(this).data('topicid');
+                let vote = $(this).data('vote');
+                $.ajax("{{ route('fr.topic-vote') }}", {
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        topic_id: topic_id,
+                        vote: vote,
+                    },
+                    beforeSend: function(xhr) {
+                        
+                    },
+                    success: function(res, status, xhr) {
+                        if (status == 'success') {
+                            if (res.statusCode == 401) {
+                                Toast.fire({
+                                    type: 'warning',
+                                    title: 'Unauthorized:',
+                                    text: res.message,
+                                });
+                            } else if (res.statusCode == 200) {
+                                $('.topic_like_count').html(res.data.likes);
+                                $('.topic_dislike_count').html(res.data.dislikes);
+
+                                Toast.fire({
+                                    type: 'success',
+                                    title: 'We Appreciate',
+                                    text: res.message,
+                                })
+                            }
+                        }
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        // on error response
+                    }
+                });
+            });
+            
+
+            //onclick like answer
+
 
             $(document).on('change', '#category', function() {
                 let category_id = $(this).val();

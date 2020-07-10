@@ -10,4 +10,15 @@ class Answer extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(AnswerVote::class, 'answer_id', 'id')->where('like', 1);
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany(AnswerVote::class, 'answer_id', 'id')->where('like', 0);
+    }
+
 }

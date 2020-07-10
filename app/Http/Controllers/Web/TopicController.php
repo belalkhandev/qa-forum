@@ -57,6 +57,16 @@ class TopicController extends Controller
         if (!$topic) {
             abort(404, 'Page not found');
         }
+        
+        if(Auth::user()) {
+            if (Auth::user()->id != $topic->user_id) {
+                $topic->seen = $topic->seen+1;
+                $topic->save();
+            }
+        } else {
+            $topic->seen = $topic->seen+1;
+            $topic->save();
+        }
 
         $data = [
             'page_title' => 'Show topic',

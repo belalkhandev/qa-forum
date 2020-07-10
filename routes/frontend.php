@@ -27,4 +27,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
+    
+// topic vote
+Route::post('/topic-vote', 'Web\VoteController@topicVote')->name('fr.topic-vote');
 

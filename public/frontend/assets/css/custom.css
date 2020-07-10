@@ -676,7 +676,6 @@ a.down:hover {
 .textwraper {
     background-color: #f1f1f1;
     border-radius: 2px;
-    padding:18px;
 }
 
 .notechbox {
@@ -1266,4 +1265,18 @@ a.down:hover {
 .answer-textwrapper textarea {
     min-height: 150px;
     padding: 10px;
+}
+
+.post-section-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+
+.topic_vote {
+    cursor: pointer;
+}
+
+.topic_vote:hover {
+    color: #000;
 }
