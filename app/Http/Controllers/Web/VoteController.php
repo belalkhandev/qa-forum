@@ -15,6 +15,30 @@ class VoteController extends Controller
         if (Auth::check())
         {
             $user_id = Auth::user()->id;
+            
+            //exists vote checking
+            $exists = QuestionVote::where('user_id', $user_id)->where('question_id', $request->get('topic_id'))->first();
+
+            if ($exists) {
+                if ($request->get('vote') == $exists->like) {
+                    $exists->delete();
+                }
+
+                //count positive vote
+                $likes = QuestionVote::where('like', 1)->get()->count();
+                //count negative vote
+                $dislikes = QuestionVote::where('like', 0)->get()->count();
+
+                return response()->json([
+                    'statusCode' => 409,
+                    'message' => 'You have already voted this topic',
+                    'data' => [
+                        'likes' => $likes,
+                        'dislikes' => $dislikes
+                    ]
+                ]); 
+            }
+
             $vote = new QuestionVote();
             $vote->question_id = $request->get('topic_id');
             $vote->user_id = $user_id;
@@ -34,7 +58,7 @@ class VoteController extends Controller
                         'dislikes' => $dislikes
                     ]
                 ]);
-                
+
                 return response()->json([
                     'statusCode' => 301,
                     'message' => 'Something went wrong',

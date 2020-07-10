@@ -178,8 +178,17 @@
                                     title: 'We Appreciate',
                                     text: res.message,
                                 })
+                            } else if (res.statusCode == 409) {
+                                $('.topic_like_count').html(res.data.likes);
+                                $('.topic_dislike_count').html(res.data.dislikes);
+                                Toast.fire({
+                                    type: 'warning',
+                                    title: 'Already Vote',
+                                    text: res.message,
+                                })
                             }
                         }
+
                     },
                     error: function (jqXhr, textStatus, errorMessage) {
                         // on error response
