@@ -443,7 +443,7 @@ td.chbox {
     padding-right: 30px;
     padding-top: 20px;
     padding-bottom: 15px;
-    color: #989c9e;
+    color: #848484;
     font-size: 14px;
     font-family: 'Open Sans Light', sans-serif;   
     line-height: 25px;
@@ -670,6 +670,7 @@ a.down:hover {
     background-color: #f1f1f1;
     /*    width: 610px;*/
     width: 100%;
+    outline: none;
 }
 
 .textwraper {
@@ -1247,4 +1248,22 @@ a.down:hover {
     margin-left: 15px;
     padding: 10px 0px;
     font-weight: 600;
+}
+
+.avatar-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #697683;
+}
+
+.ans-label i.fa {
+    font-size: 20px;
+    cursor: pointer;
+}
+.answer-textwrapper  {
+    background-color: #fff;
+}
+.answer-textwrapper textarea {
+    min-height: 150px;
+    padding: 10px;
 }

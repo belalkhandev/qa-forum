@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Profile;
 use App\Models\Role;
 use App\Models\User;
@@ -17,6 +18,7 @@ class RegisterController extends Controller
         $data = [
             'page_title' => 'Create Account',
             'page_header' => 'Create Account',
+            'categories' => Category::orderBy('name', 'ASC')->get()
         ];
 
         return view('frontend.register')->with($data);

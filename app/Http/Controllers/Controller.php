@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,6 +27,7 @@ class Controller extends BaseController
         $this->data = [
             'page_title' => 'Knowledge sharing',
             'page_header' => 'Knowledge sharing',
+            'categories' => Category::orderBy('name', 'asc')->get()
         ];
     }
 }

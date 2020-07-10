@@ -1,5 +1,5 @@
 <!-- Slider -->
-<div class="tp-banner-container">
+{{-- <div class="tp-banner-container">
     <div class="tp-banner" >
         <ul>	
             <!-- SLIDE  -->
@@ -10,7 +10,7 @@
             </li>
         </ul>
     </div>
-</div>
+</div> --}}
 <!-- //Slider -->
 
 <div class="headernav">

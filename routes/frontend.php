@@ -18,7 +18,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user-logout', 'Web\Auth\LoginController@logout')->name('fr.logout');
 
-    Route::get('new-topic', 'Web\TopicController@newTopic')->name('fr.newTopic');;
-    Route::post('new-topic', 'Web\TopicController@storeNewTopic')->name('fr.newTopic.store');;
+    Route::get('new-topic', 'Web\TopicController@newTopic')->name('fr.newTopic');
+    Route::post('new-topic', 'Web\TopicController@storeNewTopic')->name('fr.newTopic.store');
+    Route::post('topic-answer/{id}', 'Web\TopicController@topicAnswer')->name('fr.topic-answer');
+
+    Route::post('find-sub-category', 'Web\FindController@getSubCategory')->name('find.subcategory');
 
 });
+
+Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
+

@@ -1,38 +1,39 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <!-- POST -->
-    
-    <div class="post">
-        <div class="wrap-ut pull-left">
-            <div class="userinfo pull-left">
-                <div class="avatar">
-                    <img src="{{ asset('frontend/assets/img/avatar.jpg') }}" alt="" />
-                    <div class="status green">&nbsp;</div>
+    @if($questions)
+        @foreach ($questions as $key => $question)
+        <div class="post">
+            <div class="wrap-ut pull-left">
+                <div class="userinfo pull-left">
+                    <div class="avatar">
+                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                        <div class="status green">&nbsp;</div>
+                    </div>
+                    <div class="avatar-info">
+                        <h4>{{ $question->user->name }}</h4>
+                    </div>
                 </div>
-
-                <div class="icons">
-                    <img src="{{ asset('frontend/assets/img/icon1.jpg') }}" alt="" /><img src="{{ asset('frontend/assets/img/icon4.jpg') }}" alt="" />
+                <div class="posttext pull-left">
+                    <h2><a href="{{ route('fr.topic.show', $question->id) }}">{{ $question->title }}</a></h2>
+                    {{ Str::limit($question->description, 150, '....') }}
                 </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="posttext pull-left">
-                <h2><a href="02_topic.html">10 Kids Unaware of Their Halloween Costume</a></h2>
-                <p>It's one thing to subject yourself to a Halloween costume mishap because, hey, that's your prerogative.</p>
+            <div class="postinfo pull-left">
+                <div class="comments">
+                    <div class="commentbg">
+                        {{ count($question->answers) }}
+                        <div class="mark"></div>
+                    </div>
+    
+                </div>
+                <div class="views"><i class="fa fa-eye"></i> {{ $question->seen }}</div>
+                <div class="time"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</div>                                    
             </div>
             <div class="clearfix"></div>
-        </div>
-        <div class="postinfo pull-left">
-            <div class="comments">
-                <div class="commentbg">
-                    560
-                    <div class="mark"></div>
-                </div>
-
-            </div>
-            <div class="views"><i class="fa fa-eye"></i> 1,568</div>
-            <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
-        </div>
-        <div class="clearfix"></div>
-    </div><!-- POST -->
+        </div><!-- POST -->
+        @endforeach
+    @endif
     
 @endsection

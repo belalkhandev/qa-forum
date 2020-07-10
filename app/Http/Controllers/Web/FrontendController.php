@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,7 @@ class FrontendController extends Controller
         $data = [
             'page_title' => 'Home page',
             'page_header' => 'Home page',
+            'questions' => Question::orderBy('id', 'DESC')->get()
         ];
 
         return view('frontend.index')->with(array_merge($this->data, $data));

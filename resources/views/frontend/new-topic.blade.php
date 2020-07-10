@@ -22,16 +22,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <select name="category" id="category"  class="form-control" >
-                                    
-                                </select>
+                                {!! Form::select('category', makeDropdownList($categories), null, ['placeholder' => 'Select Category', 'class' => 'form-control', 'id' => 'category']) !!}
                                 <span class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <select name="subcategory" id="subcategory"  class="form-control" >
-                                    
+                                    <option>Select Sub-Category</option>
                                 </select>
                                 <span class="text-danger"></span>
                             </div>
@@ -63,3 +61,60 @@
     </div><!-- POST -->
     
 @endsection
+
+@push('footer-scripts')
+<script>
+    (function ($) {
+        "use-strict"
+
+        jQuery(document).ready(function () {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            $(document).on('change', '#category', function() {
+                let category_id = $(this).val();
+                let sub_category = '<option value="">Select Sub Category</option>';  
+                if (category_id) {
+                    $.ajax("{{ route('find.subcategory') }}", {
+                        type: 'POST',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            category_id: category_id,
+                        },
+                        beforeSend: function (xhr) {
+                            $('#subcategory').html('<option value="">Loading....</option>');
+                        },
+                        success: function (res, status, xhr) {
+                            if(status = 'success' && res.sub_categories) {
+                                $.each(res.sub_categories, function(key, category) {
+                                    sub_category += '<option value="'+category.id+'">'+category.name+'</option>'
+                                });
+                            } else {
+                                sub_category = '<option value="">Not found</option>'
+                            }
+
+                            $('#subcategory').html(sub_category);
+                        },
+                        error: function (jqXhr, textStatus, errorMessage) {
+
+                        }
+                    });
+                } else {
+                    $('#subcategory').html(sub_category);
+                }
+            });
+
+        });
+    }(jQuery));
+</script>
+@endpush
+
