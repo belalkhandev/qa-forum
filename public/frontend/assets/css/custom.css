@@ -1340,3 +1340,16 @@ input[name="topic_title"] {
 .search_match_items ul li:hover {
     background: #e4e8e8;
 }
+
+.headernav ul.navbar.nav {
+    margin-top: 15px;
+}
+
+.headernav ul.navbar.nav li a{
+    font-weight: 600
+}
+
+.headernav ul.navbar.nav li:hover a{
+    background: none;
+    text-decoration: underline;
+}

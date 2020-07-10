@@ -31,10 +31,14 @@ class FindController extends Controller
     {
         $output = '';
         $keyword = $request->get('search_keyword');
-        $categories = Category::where('name', 'like', "$keyword%")->get();
-        if ($categories->isNotEmpty()) {
-            foreach($categories as $category) {
-                $output .= '<li class="matched_item">'.$category->name.'</li>';
+        $categories = Category::select('name')->where('name', 'like', "$keyword%")->get()->toArray();
+        $sub_categories = SubCategory::select('name')->where('name', 'like', "$keyword%")->get()->toArray();
+
+        $all_categories = array_merge($categories, $sub_categories);
+
+        if ($all_categories) {
+            foreach($all_categories as $category) {
+                $output .= '<li class="matched_item">'.$category['name'].'</li>';
             }
         } else {
             $output .= '<li>Not matched</li>';

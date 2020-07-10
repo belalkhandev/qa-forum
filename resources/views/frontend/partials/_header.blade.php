@@ -87,7 +87,7 @@
             $(document).on('keyup', '#searchInput', function () {
                 let search_keyword = $.trim($(this).val());
                 
-                if (search_keyword.length > 1) {
+                if (search_keyword.length > 0) {
                     $.ajax("{{ route('fr.search.match') }}", {
                         type: 'POST',
                         data: {
