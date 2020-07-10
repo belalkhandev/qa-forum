@@ -26,12 +26,12 @@
             </div>
             <div class="col-lg-4 search hidden-xs hidden-sm col-md-4">
                 <div class="wrap">
-                    <form action="#" method="post" class="form search_form">
+                    {!! Form::open(['route' => 'fr.search.topic', 'class' => 'form search_form', 'method' => 'GET']) !!}
                         <div class="pull-left txt">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search Topics" autocomplete="off">
+                            <input type="text" id="searchInput" name="keyword" class="form-control" placeholder="Search Topics" autocomplete="off">
                         </div>
                         <div class="pull-right">
-                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="search_match_items">
                             <ul id="matched_items">
@@ -39,7 +39,7 @@
                             </ul>
                         </div>
                         <div class="clearfix"></div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
             <div class="col-lg-6 col-xs-12 col-sm-5 col-md-6 avt">

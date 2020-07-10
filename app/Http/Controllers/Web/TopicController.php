@@ -119,4 +119,26 @@ class TopicController extends Controller
         return view('frontend.category-topics')->with(array_merge($this->data, $data));
     
     }
+
+    public function searchTopic(Request $request)
+    {
+        $value = $request->get('keyword');
+
+        $questions = Question::whereHas('category', function ($q) use ($value) {
+            $q->where('name', 'LIKE', "$value%");
+        })
+        ->orWhereHas('subCategory', function ($q) use ($value) {
+            $q->where('name', 'LIKE', "$value%");
+        })
+        ->get();
+
+         $data = [
+            'page_title' => 'Search result',
+            'page_header' => 'Search result',
+            'questions' => $questions
+        ];
+
+        return view('frontend.search-topics')->with(array_merge($this->data, $data));
+    
+    }
 }

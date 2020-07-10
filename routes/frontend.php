@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
 Route::get('topics/category/{id}', 'Web\TopicController@categoryTopic')->name('fr.topic.category');
+Route::get('search-topic', 'Web\TopicController@searchTopic')->name('fr.search.topic');
     
 // topic vote
 Route::post('/topic-vote', 'Web\VoteController@topicVote')->name('fr.topic-vote');
