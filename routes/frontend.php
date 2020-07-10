@@ -36,3 +36,5 @@ Route::post('/topic-vote', 'Web\VoteController@topicVote')->name('fr.topic-vote'
 // answer vote
 Route::post('/answer-vote', 'Web\VoteController@answerVote')->name('fr.answer-vote');
 
+Route::post('search-category', 'Web\FindController@searchCategory')->name('fr.search.match');
+

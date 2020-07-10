@@ -15,6 +15,11 @@
                     <h4>{{ $topic->user->name }}</h4>
                 </div>
 
+                <div class="category-name">
+                    <span>{{ $topic->category->name }}</span>
+                    {!! $topic->subCategory ? '<span>'. $topic->subCategory->name .'</span>' : '' !!}
+                </div>
+
             </div>
             <div class="posttext pull-left">
                 <h2>{{ $topic->title }}</h2>
@@ -250,40 +255,6 @@
                         // on error response
                     }
                 });
-            });
-
-
-            $(document).on('change', '#category', function() {
-                let category_id = $(this).val();
-                let sub_category = '<option value="">Select Sub Category</option>';  
-                if (category_id) {
-                    $.ajax("{{ route('find.subcategory') }}", {
-                        type: 'POST',
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            category_id: category_id,
-                        },
-                        beforeSend: function (xhr) {
-                            $('#subcategory').html('<option value="">Loading....</option>');
-                        },
-                        success: function (res, status, xhr) {
-                            if(status = 'success' && res.sub_categories) {
-                                $.each(res.sub_categories, function(key, category) {
-                                    sub_category += '<option value="'+category.id+'">'+category.name+'</option>'
-                                });
-                            } else {
-                                sub_category = '<option value="">Not found</option>'
-                            }
-
-                            $('#subcategory').html(sub_category);
-                        },
-                        error: function (jqXhr, textStatus, errorMessage) {
-
-                        }
-                    });
-                } else {
-                    $('#subcategory').html(sub_category);
-                }
             });
 
         });

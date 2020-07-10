@@ -13,6 +13,10 @@
                     <div class="avatar-info">
                         <h4>{{ $question->user->name }}</h4>
                     </div>
+                    <div class="category-name">
+                        <span>{{ $question->category->name }}</span>
+                        {!! $question->subCategory ? '<span>'. $question->subCategory->name .'</span>' : '' !!}
+                    </div>
                 </div>
                 <div class="posttext pull-left">
                     <h2><a href="{{ route('fr.topic.show', $question->id) }}">{{ $question->title }}</a></h2>

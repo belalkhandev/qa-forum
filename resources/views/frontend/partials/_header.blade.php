@@ -26,9 +26,18 @@
             </div>
             <div class="col-lg-4 search hidden-xs hidden-sm col-md-4">
                 <div class="wrap">
-                    <form action="#" method="post" class="form">
-                        <div class="pull-left txt"><input type="text" class="form-control" placeholder="Search Topics"></div>
-                        <div class="pull-right"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></div>
+                    <form action="#" method="post" class="form search_form">
+                        <div class="pull-left txt">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search Topics" autocomplete="off">
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="search_match_items">
+                            <ul id="matched_items">
+                                
+                            </ul>
+                        </div>
                         <div class="clearfix"></div>
                     </form>
                 </div>
@@ -66,3 +75,55 @@
         </div>
     </div>
 </div>
+
+@push('footer-scripts')
+<script>
+    (function ($) {
+        "use-strict"
+
+        jQuery(document).ready(function () {
+
+            //onclick vote answer
+            $(document).on('keyup', '#searchInput', function () {
+                let search_keyword = $.trim($(this).val());
+                
+                if (search_keyword.length > 1) {
+                    $.ajax("{{ route('fr.search.match') }}", {
+                        type: 'POST',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search_keyword: search_keyword,
+                        },
+                        beforeSend: function(xhr) {
+                            $('.search_match_items').removeClass('show');
+                            $('#matched_items').html('');
+                        },
+                        success: function(res, status, xhr) {
+                            if (status == 'success') {
+                                $('.search_match_items').addClass('show');
+                                $('#matched_items').html(res);
+                            }
+
+                        },
+                        error: function (jqXhr, textStatus, errorMessage) {
+                            // on error response
+                        }
+                    });
+                } else {
+                    $('.search_match_items').removeClass('show');
+                    $('#matched_items').html('');
+                }
+                
+            });
+
+            $(document).on('click', '.matched_item', function () {
+                let item = $(this).html();
+                $('#searchInput').val(item);
+                $('.search_match_items').removeClass('show');
+                $('#matched_items').html('');
+            });
+
+        });
+    }(jQuery));
+</script>
+@endpush
