@@ -14,7 +14,7 @@ class FrontendController extends Controller
         $data = [
             'page_title' => 'Home page',
             'page_header' => 'Home page',
-            'questions' => Question::orderBy('id', 'DESC')->get()
+            'questions' => Question::orderBy('id', 'DESC')->paginate(15)
         ];
 
         return view('frontend.index')->with(array_merge($this->data, $data));

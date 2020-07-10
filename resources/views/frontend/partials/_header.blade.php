@@ -1,5 +1,5 @@
 <!-- Slider -->
-{{-- <div class="tp-banner-container">
+<div class="tp-banner-container">
     <div class="tp-banner" >
         <ul>	
             <!-- SLIDE  -->
@@ -10,14 +10,21 @@
             </li>
         </ul>
     </div>
-</div> --}}
+</div>
 <!-- //Slider -->
 
 <div class="headernav">
     <div class="container">
         <div class="row">
             <div class="col-lg-1 col-xs-3 col-sm-2 col-md-2 logo "><a href="{{ route('fr.home') }}"><img src="{{ asset('frontend/assets/img/logo.jpg') }}" alt=""  /></a></div>
-            <div class="col-lg-5 search hidden-xs hidden-sm col-md-4">
+            <div class="col-lg-1 col-md-1">                
+                <ul class="navbar nav">
+                    <li>
+                        <a href="{{ route('fr.home') }}">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 search hidden-xs hidden-sm col-md-4">
                 <div class="wrap">
                     <form action="#" method="post" class="form">
                         <div class="pull-left txt"><input type="text" class="form-control" placeholder="Search Topics"></div>

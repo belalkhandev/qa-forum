@@ -107,4 +107,16 @@ class TopicController extends Controller
             'message' => 'Something went wrong'
         ]);
     }
+
+    public function categoryTopic($id)
+    {
+         $data = [
+            'page_title' => 'Category Topic',
+            'page_header' => 'Category Topic',
+            'questions' => Question::where('category_id', $id)->orderBy('id', 'DESC')->paginate(15)
+        ];
+
+        return view('frontend.category-topics')->with(array_merge($this->data, $data));
+    
+    }
 }

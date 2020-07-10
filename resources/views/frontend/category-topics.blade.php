@@ -34,6 +34,8 @@
             <div class="clearfix"></div>
         </div><!-- POST -->
         @endforeach
+        {{-- paginate --}}
+        {{ $questions->links() }}
         @else 
         <h3>No Topic Found</h3>
     @endif

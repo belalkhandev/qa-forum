@@ -1280,3 +1280,8 @@ a.down:hover {
 .topic_vote:hover {
     color: #000;
 }
+
+input[name="topic_title"] {
+    font-weight: bold;
+    color: #000 !important;
+}

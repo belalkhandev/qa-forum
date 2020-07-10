@@ -14,6 +14,7 @@ Route::post('signin', 'Web\Auth\LoginController@login')->name('fr.login');
 Route::get('create-account', 'Web\Auth\RegisterController@showRegisterForm')->name('fr.create-account');
 Route::post('create-account', 'Web\Auth\RegisterController@store')->name('fr.register');
 
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('user-logout', 'Web\Auth\LoginController@logout')->name('fr.logout');
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
+Route::get('topics/category/{id}', 'Web\TopicController@categoryTopic')->name('fr.topic.category');
     
 // topic vote
 Route::post('/topic-vote', 'Web\VoteController@topicVote')->name('fr.topic-vote');
