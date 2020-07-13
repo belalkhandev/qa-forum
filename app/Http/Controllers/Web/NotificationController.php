@@ -10,6 +10,23 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
+    public function index()
+    {
+        if (Auth::user()) {
+            $notifications =  Notification::where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(50)->get();
+            $data = [
+                'page_title' => 'Notifications',
+                'page_header' => 'Notifications List',
+                'notifications' => $notifications
+            ];
+    
+            return view('frontend.notifications')->with(array_merge($this->data, $data));
+            
+        } else {
+            abort(401, 'Unauthorized access');
+        }
+    }
+
     public function getNotification()
     {
         $output = '';

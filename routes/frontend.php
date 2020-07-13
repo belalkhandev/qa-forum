@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('find-sub-category', 'Web\FindController@getSubCategory')->name('find.subcategory');
 
     // notification loading
+    Route::get('notifications', 'Web\NotificationController@index')->name('fr.notifications');
     Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
 
 });

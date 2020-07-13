@@ -80,7 +80,7 @@
                                 </a> --}}
                             </div>
                             <div class="notification-box-footer">
-                                <a href="#">See All</a>
+                                <a href="{{ route('fr.notifications') }}">See All</a>
                             </div>
                         </div>
                     </div>

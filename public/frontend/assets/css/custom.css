@@ -1460,3 +1460,8 @@ input[name="topic_title"] {
 .user-action p {
     font-size: 12px;
 }
+
+.notificaions {
+    background: #fff;
+    padding: 20px;
+}
