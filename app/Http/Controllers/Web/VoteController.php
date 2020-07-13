@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\AnswerVote;
+use App\Models\Notification;
 use App\Models\QuestionVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,15 @@ class VoteController extends Controller
             $vote->like = $request->get('vote');
 
             if ($vote->save()) {
+                 //notification for question
+               $title = 'React your question';
+               $notification = new Notification();
+               $notification->notification_from_user_id = $user_id;
+               $notification->notification_to_user_id = $vote->question->user_id;
+               $notification->notification_for = 'question';
+               $notification->notification_for_id = $vote->question_id;
+               $notification->notification_title = $title;
+               $notification->save();
                 //count positive vote
                 $likes = QuestionVote::where('question_id', $request->get('topic_id'))->where('like', 1)->get()->count();
                 //count negative vote

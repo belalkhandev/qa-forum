@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Answer;
+use App\Models\Notification;
 use App\Models\Question;
 use App\Models\QuestionVote;
 use Illuminate\Http\Request;
@@ -93,6 +94,22 @@ class TopicController extends Controller
         $answer->description = $request->get('answer');
 
         if ($answer->save()) {
+            //notification store
+            $to = $answer->question->user_id;
+            $from = Auth::user()->id;
+
+            if ($to != $from) {
+               //notification for question
+               $title = 'Answer your question';
+               $notification = new Notification();
+               $notification->notification_from_user_id = $from;
+               $notification->notification_to_user_id = $to;
+               $notification->notification_for = 'question';
+               $notification->notification_for_id = $answer->question_id;
+               $notification->notification_title = $title;
+               $notification->save();                
+            }
+
             return response()->json([
                 'type' => 'success',
                 'title' => 'Thank you',
