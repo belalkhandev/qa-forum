@@ -7,7 +7,15 @@
             <div class="wrap-ut pull-left">
                 <div class="userinfo pull-left">
                     <div class="avatar">
-                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                        @if($question->user->profile)
+                            @if ($question->user->profile->photo)
+                                <img src="{{ asset($question->user->profile->photo) }}" alt="" />  
+                            @else 
+                                <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                            @endif
+                        @else
+                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                        @endif
                         <div class="status green">&nbsp;</div>
                     </div>
                     <div class="avatar-info">

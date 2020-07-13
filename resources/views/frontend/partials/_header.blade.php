@@ -49,9 +49,19 @@
 
                 @if (Auth::user())
                     <div class="avatar pull-right dropdown">
-                        <a data-toggle="dropdown" href="#">
+                        <a data-toggle="dropdown" href="#" class="avatar_dropdown">
                             <span>{{ Auth::user()->name }}</span>
-                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /></a> 
+                            @if(Auth::user()->profile)
+                                @if (Auth::user()->profile->photo)
+                                    <img src="{{ asset(Auth::user()->profile->photo) }}" alt="" />  
+                                @else 
+                                    <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                                @endif
+                            @else
+                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                            @endif
+                        </a>
+                            
                             <b class="caret"></b>
                         <div class="status green">&nbsp;</div>
                         <ul class="dropdown-menu" role="menu">

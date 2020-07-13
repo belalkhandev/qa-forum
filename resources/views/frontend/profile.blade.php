@@ -6,7 +6,11 @@
             {!! Form::open(['class' => 'profile-form', 'method' => 'POST', 'route' => 'fr.profile.update']) !!}
             <div class="col-md-3">
                 <div class="profile_img">
-                    <img src="{{ asset($profile->photo) }}" alt="">
+                    @if($profile->photo)
+                        <img src="{{ asset($profile->photo) }}" alt="">
+                    @else                    
+                    <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
+                    @endif
                 </div>
                 <div class="avatar-name">
                     <h3>{{ $profile->first_name.' '.$profile->last_name }}</h3>

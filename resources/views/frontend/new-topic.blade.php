@@ -8,7 +8,15 @@
             <div class="topwrap">
                 <div class="userinfo pull-left">
                     <div class="avatar">
-                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                        @if(Auth::user()->profile)
+                            @if (Auth::user()->profile->photo)
+                                <img src="{{ asset(Auth::user()->profile->photo) }}" alt="" />  
+                            @else 
+                                <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                            @endif
+                        @else
+                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                        @endif
                         <div class="status red">&nbsp;</div>
                     </div>
                 </div>

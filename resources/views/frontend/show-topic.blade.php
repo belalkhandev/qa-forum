@@ -7,7 +7,15 @@
         <div class="topwrap">
             <div class="userinfo pull-left">
                 <div class="avatar">
-                    <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                    @if($topic->user->profile)
+                        @if ($topic->user->profile->photo)
+                            <img src="{{ asset($topic->user->profile->photo) }}" alt="" />  
+                        @else 
+                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                        @endif
+                    @else
+                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                    @endif
                     <div class="status green">&nbsp;</div>
                 </div>
 
@@ -61,7 +69,15 @@
                 <div class="topwrap">
                     <div class="userinfo pull-left">
                         <div class="avatar">
-                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                            @if($answer->user->profile)
+                                @if ($answer->user->profile->photo)
+                                    <img src="{{ asset($answer->user->profile->photo) }}" alt="" />  
+                                @else 
+                                    <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                                @endif
+                            @else
+                                <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                            @endif
                             <div class="status red">&nbsp;</div>
                         </div>
 
@@ -110,7 +126,15 @@
                 <div class="topwrap">
                     <div class="userinfo pull-left">
                         <div class="avatar">
-                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" />
+                            @if(Auth::user()->profile)
+                                @if (Auth::user()->profile->photo)
+                                    <img src="{{ asset(Auth::user()->profile->photo) }}" alt="" />  
+                                @else 
+                                    <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                                @endif
+                            @else
+                            <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
+                            @endif
                             <div class="status red">&nbsp;</div>
                         </div>
 
@@ -166,7 +190,7 @@
                 }
             })
 
-            //onclick vote question
+            //onclick vote topic
             $(document).on('click', '.topic_vote', function () {
                 let topic_id = $(this).data('topicid');
                 let vote = $(this).data('vote');

@@ -58,7 +58,8 @@ class RegisterController extends Controller
             return response()->json([
                 'type' => 'success',
                 'title' => 'Congratulation!',
-                'message' => 'Registration successfully done'
+                'message' => 'Registration successfully done',
+                'redirect' => route('fr.login-account')
             ]);
         }
 
