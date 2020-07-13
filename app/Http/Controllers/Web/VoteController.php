@@ -48,14 +48,24 @@ class VoteController extends Controller
 
             if ($vote->save()) {
                  //notification for question
-               $title = 'React your question';
-               $notification = new Notification();
-               $notification->notification_from_user_id = $user_id;
-               $notification->notification_to_user_id = $vote->question->user_id;
-               $notification->notification_for = 'question';
-               $notification->notification_for_id = $vote->question_id;
-               $notification->notification_title = $title;
-               $notification->save();
+                $title = 'React your question';
+                //check exits notification
+                $n_exists = Notification::where('notification_from_user_id', $user_id)
+                ->where('notification_to_user_id', $vote->question->user_id)
+                ->where('notification_for', 'question')
+                ->where('notification_title', $title)
+                ->first();
+                
+                 if (!$n_exists) {
+                    $notification = new Notification();
+                    $notification->notification_from_user_id = $user_id;
+                    $notification->notification_to_user_id = $vote->question->user_id;
+                    $notification->notification_for = 'question';
+                    $notification->notification_for_id = $vote->question_id;
+                    $notification->notification_title = $title;
+                    $notification->save();
+                 }
+                 
                 //count positive vote
                 $likes = QuestionVote::where('question_id', $request->get('topic_id'))->where('like', 1)->get()->count();
                 //count negative vote

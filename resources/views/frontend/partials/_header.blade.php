@@ -67,16 +67,9 @@
                                 <h3 class="notification-box-title">Notificatoin</h3>
                             </div>
                             <div class="notification-box-body">
-                                <a href="#" class="notification-item">
-                                    <div class="user-img">
-                                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
-                                    </div>
-                                    <div class="user-action">
-                                        <h3>Belal Khan <span>like your post</span></h3>
-                                        <p><i class="fa fa-clock-o"></i>1 min ago</p>
-                                    </div>
-                                </a>
-                                <a href="#" class="notification-item">
+                                
+
+                                {{-- <a href="#" class="notification-item">
                                     <div class="user-img">
                                         <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
                                     </div>
@@ -84,7 +77,7 @@
                                         <h3>Belal Khan <span> Answer your post</span></h3>
                                         <p><i class="fa fa-clock-o"></i>1 min ago</p>
                                     </div>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="notification-box-footer">
                                 <a href="#">See All</a>
@@ -155,6 +148,28 @@
 
             $(document).on('click', '#notification_dropdown', function () {
                 $(this).toggleClass('show-notification');
+                
+                if ($('.show-notification').length > 0) {
+                    $.ajax("{{ route('fr.get.notification') }}", {
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}", 
+                        },
+                        beforeSend: function (xhr) {
+                            $('.notification-box-body').html('<p>Please wait, loading...........</p>');
+                        },
+                        success: function (res, status, xhr) {
+                            if (status = 'success') {
+                                $('.notification-box-body').html(res)
+                            }
+                        },
+                        error: function (jqXhr, textStatus, errorMessage) {
+
+                        }
+                    });
+                } else {
+                    console.log('no action');
+                }
             });
 
         });
