@@ -51,10 +51,12 @@ class NotificationController extends Controller
                         $update_notification->save();
                     }
 
+                    $user_img = $notification->userFrom->profile ? $notification->userFrom->profile->photo : 'frontend/assets/img/avatar-blank.jpg' ;
+
 
                     $output .= '<a href="'.route('fr.topic.show', $notification->notification_for_id).'" class="notification-item">';
                     $output .= '<div class="user-img">';
-                    $output .= '<img src="'.asset('frontend/assets/img/avatar-blank.jpg').'" alt="">';
+                    $output .= '<img src="'.asset($user_img).'" alt="">';
                     $output .= '</div>';
                     $output .= '<div class="user-action">';
                     $output .= '<h3>'.$notification->userFrom->name.' <span>'.$notification->notification_title.'</span></h3>';
@@ -72,5 +74,12 @@ class NotificationController extends Controller
         return response()->json([
             'message' => 'Unathorized action'
         ]);
+    }
+
+    public function countNotification()
+    {
+        $notification = Notification::where('notification_to_user_id', Auth::user()->id)->where('seen', 0)->get()->count();
+
+        return $notification;
     }
 }

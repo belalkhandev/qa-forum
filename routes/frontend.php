@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     // notification loading
     Route::get('notifications', 'Web\NotificationController@index')->name('fr.notifications');
     Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
+    Route::post('count-notification', 'Web\NotificationController@countNotification')->name('fr.notification.count');
 
     //profile update
     Route::get('profile', 'Web\ProfileController@index')->name('fr.profile');

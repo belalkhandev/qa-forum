@@ -170,6 +170,26 @@
                 }
             });
 
+            // get notification in a certain time
+            setInterval(function () {
+                $.ajax("{{ route('fr.notification.count') }}", {
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                    },
+                    beforeSend: function () {
+                        $('#notification_dropdown i.fa.fa-bell').html('');
+                    },
+                    success: function (res, status, xhr) {
+                        if (status = 'success') {
+                            if (res > 0) {
+                                $('#notification_dropdown i.fa.fa-bell').html('<span class="notification_count">'+res+'</span>');
+                            }
+                        }
+                    }
+                });
+            }, 10000);
+
         });
     }(jQuery));
 </script>
