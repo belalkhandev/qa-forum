@@ -23,6 +23,7 @@
             </div>
             <div class="posttext pull-left">
                 <h2>{{ $topic->title }}</h2>
+                <img src="{{ asset($topic->photo) }}" alt="">
                 <p>{{ $topic->description }}</p>
             </div>
             <div class="clearfix"></div>

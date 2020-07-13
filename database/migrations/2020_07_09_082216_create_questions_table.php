@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('seen')->default(0);
+            $table->string('photo')->nullable(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');

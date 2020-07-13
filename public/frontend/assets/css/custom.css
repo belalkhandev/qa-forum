@@ -439,8 +439,8 @@ td.chbox {
 
 .post .posttext {
     width: 85%;
-    width: 85%;
     padding-right: 30px;
+    padding-left: 10px;
     padding-top: 20px;
     padding-bottom: 15px;
     color: #848484;
@@ -1464,4 +1464,10 @@ input[name="topic_title"] {
 .notificaions {
     background: #fff;
     padding: 20px;
+}
+
+.post .posttext img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0px;
 }

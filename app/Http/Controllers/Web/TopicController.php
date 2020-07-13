@@ -7,6 +7,7 @@ use App\Models\Answer;
 use App\Models\Notification;
 use App\Models\Question;
 use App\Models\QuestionVote;
+use App\Services\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,14 @@ class TopicController extends Controller
         $this->validate($request, [
             'topic_title' => 'required',
             'category' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5120'
         ]);
+
+        // uplaod file
+        $path = null;
+        if ($request->hasFile('image')) {
+            $path = Utility::file_upload($request, 'image', 'questions');
+        }
 
         $topic = new Question();
         $topic->user_id = Auth::user()->id;
@@ -35,6 +43,7 @@ class TopicController extends Controller
         $topic->sub_category_id = $request->get('subcategory');
         $topic->title = $request->get('topic_title');
         $topic->description = $request->get('description');
+        $topic->photo = $path;
 
         if ($topic->save()) {
             return response()->json([

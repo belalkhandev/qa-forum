@@ -37,7 +37,12 @@
                     </div>
                     <div>
                         <div class="form-group">
-                            <textarea name="description" id="desc" placeholder="Description"  class="form-control" ></textarea>
+                            <textarea name="description" id="desc" placeholder="brief about your question"  class="form-control" ></textarea>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Add image</label><br>
+                            <input type="file" name="image">
                             <span class="text-danger"></span>
                         </div>
                     </div>
@@ -61,9 +66,8 @@
     </div><!-- POST -->
     
 @endsection
-
 @push('footer-scripts')
-<script>
+    <script>
     (function ($) {
         "use-strict"
 

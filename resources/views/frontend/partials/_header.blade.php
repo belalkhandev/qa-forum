@@ -64,21 +64,9 @@
                         <i class="fa fa-bell"></i>
                         <div class="notification-box">
                             <div class="notification-box-header">
-                                <h3 class="notification-box-title">Notificatoin</h3>
+                                <h3 class="notification-box-title">Notification</h3>
                             </div>
-                            <div class="notification-box-body">
-                                
-
-                                {{-- <a href="#" class="notification-item">
-                                    <div class="user-img">
-                                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
-                                    </div>
-                                    <div class="user-action">
-                                        <h3>Belal Khan <span> Answer your post</span></h3>
-                                        <p><i class="fa fa-clock-o"></i>1 min ago</p>
-                                    </div>
-                                </a> --}}
-                            </div>
+                            <div class="notification-box-body"></div>
                             <div class="notification-box-footer">
                                 <a href="{{ route('fr.notifications') }}">See All</a>
                             </div>

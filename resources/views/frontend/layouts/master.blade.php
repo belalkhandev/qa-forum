@@ -10,7 +10,7 @@
         <!-- Bootstrap -->
         <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
-
+        @yield('header-styles')
         <!-- Custom -->
         <link href="{{ asset('frontend/assets/css/custom.css') }}" rel="stylesheet">
 
