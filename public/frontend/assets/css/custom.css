@@ -1353,3 +1353,110 @@ input[name="topic_title"] {
     background: none;
     text-decoration: underline;
 }
+
+/* notification style */
+#notification_dropdown {
+    position: relative;
+    cursor: pointer
+}
+
+.notification-box {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    z-index: 999;
+    width: 300px;
+    cursor: default;
+    display: none;
+}
+
+.show-notification i.fa {
+    color: #1abc9c;
+}
+
+.notification-box-header {
+    background: #f95a61;
+    padding: 10px;
+}
+
+.notification-box-title {
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.notification-box-body {
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: normal;
+}
+
+.notification-box-footer {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+.notification-box-footer a {
+    color: #1abc9c;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px;
+    padding: 0px
+}
+
+.show-notification .notification-box {
+    display: block;
+}
+
+.notification-item {
+    border-bottom: 1px solid #ececec;
+    padding: 8px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.notification-item:last-child {
+    border-bottom: 0px solid #ececec;
+}
+
+.user-action h3, .user-action p {
+    margin: 0;
+    padding: 0;
+}
+
+.user-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-action {
+    margin-left: 5px;
+}
+
+.user-action h3 {
+    color: #000;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.user-action h3 span {
+    font-weight: 100;
+}
+
+.user-action p {
+    font-size: 12px;
+}

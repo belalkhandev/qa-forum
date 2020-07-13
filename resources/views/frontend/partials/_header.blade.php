@@ -60,7 +60,37 @@
                             <li role="presentation"><a role="menuitem" tabindex="-3" href="{{ route('fr.logout') }}">Log Out</a></li>
                         </ul>
                     </div>                    
-                    <div class="env pull-right"><i class="fa fa-bell"></i></div>
+                    <div class="env pull-right" id="notification_dropdown">
+                        <i class="fa fa-bell"></i>
+                        <div class="notification-box">
+                            <div class="notification-box-header">
+                                <h3 class="notification-box-title">Notificatoin</h3>
+                            </div>
+                            <div class="notification-box-body">
+                                <a href="#" class="notification-item">
+                                    <div class="user-img">
+                                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
+                                    </div>
+                                    <div class="user-action">
+                                        <h3>Belal Khan <span>like your post</span></h3>
+                                        <p><i class="fa fa-clock-o"></i>1 min ago</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="notification-item">
+                                    <div class="user-img">
+                                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
+                                    </div>
+                                    <div class="user-action">
+                                        <h3>Belal Khan <span> Answer your post</span></h3>
+                                        <p><i class="fa fa-clock-o"></i>1 min ago</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="notification-box-footer">
+                                <a href="#">See All</a>
+                            </div>
+                        </div>
+                    </div>
                     @else 
                     <div class="header-nav">
                         <ul>
@@ -121,6 +151,10 @@
                 $('#searchInput').val(item);
                 $('.search_match_items').removeClass('show');
                 $('#matched_items').html('');
+            });
+
+            $(document).on('click', '#notification_dropdown', function () {
+                $(this).toggleClass('show-notification');
             });
 
         });
