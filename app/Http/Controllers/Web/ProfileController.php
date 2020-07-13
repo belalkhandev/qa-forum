@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Services\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -80,6 +81,59 @@ class ProfileController extends Controller
             'type' => 'error',
             'title' => 'Failed!',
             'message' => 'Registration failed'
+        ]);
+    }
+
+    public function changePassword()
+    {
+        if (!Auth::user()) {
+            abort(401, 'Unauthorized');
+        }
+
+        $data = [
+            'page_title' => 'Change password',
+            'page_header' => 'Change password',
+        ];
+
+        return view('frontend.change-password')->with(array_merge($this->data, $data));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'current_password' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ],[
+            'password.required' => 'Enter new password'
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->get('current_password'), $user->password)) {
+            return response()->json([
+                'type' => 'warning',
+                'title' => 'Current password is wrong',
+                'message' => ''
+            ]);
+        }
+
+        $password = Hash::make($request['password']);
+
+        $user->password = $password;
+        
+        if ($user->save()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Password Updated',
+                'message' => 'Password changed  successfully'
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'error',
+            'title' => 'Failed',
+            'message' => 'Password failed to update'
         ]);
     }
 

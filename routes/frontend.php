@@ -18,6 +18,8 @@ Route::post('create-account', 'Web\Auth\RegisterController@store')->name('fr.reg
 Route::middleware(['auth'])->group(function () {
 
     Route::get('user-logout', 'Web\Auth\LoginController@logout')->name('fr.logout');
+    Route::get('change-password', 'Web\ProfileController@changePassword')->name('fr.change-password');
+    Route::post('change-password', 'Web\ProfileController@updatePassword')->name('fr.update-password');
 
     Route::get('new-topic', 'Web\TopicController@newTopic')->name('fr.newTopic');
     Route::post('new-topic', 'Web\TopicController@storeNewTopic')->name('fr.newTopic.store');

@@ -66,7 +66,7 @@
                         <div class="status green">&nbsp;</div>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fr.profile') }}">My Profile</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-2" href="{{ route('fr.profile') }}">Change password</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-2" href="{{ route('fr.change-password') }}">Change password</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-3" href="{{ route('fr.logout') }}">Log Out</a></li>
                         </ul>
                     </div>                    
