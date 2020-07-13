@@ -1471,3 +1471,16 @@ input[name="topic_title"] {
     height: auto;
     margin: 10px 0px;
 }
+
+.profile-form .form-control {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.profile_img img {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50%;
+}

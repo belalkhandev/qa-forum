@@ -40,16 +40,8 @@
             @include('frontend.partials._header')
 
             <section class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-md-offset-3 col-lg-offset-3">
-                            
-                            {{-- content goes to here --}}
-                            @yield('content')
-
-                        </div>
-                    </div>
-                </div>
+                {{-- content goes to here --}}
+                @yield('content')
 
             </section>
             

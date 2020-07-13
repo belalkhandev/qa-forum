@@ -29,6 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('notifications', 'Web\NotificationController@index')->name('fr.notifications');
     Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
 
+    //profile update
+    Route::get('profile', 'Web\ProfileController@index')->name('fr.profile');
+    Route::post('profile', 'Web\ProfileController@update')->name('fr.profile.update');
+
 });
 
 Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
