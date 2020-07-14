@@ -299,3 +299,7 @@ table.dataTable.no-footer {
     background: #007bff;
     cursor: pointer;
 }
+
+.form-control.no-border {
+    border: none;
+}

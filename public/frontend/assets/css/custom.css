@@ -1509,3 +1509,7 @@ input[name="topic_title"] {
     padding: 3px 5px;
     border-radius: 50%;
 }
+
+.form-control.no-border {
+    border: 0px solid #fff;
+}

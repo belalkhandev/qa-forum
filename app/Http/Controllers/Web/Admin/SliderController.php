@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
@@ -14,7 +14,7 @@ class SliderController extends Controller
         $data = [
             'page_title' => 'Slider',
             'page_header' => 'Slider List',
-            'sliders' => Slider::paginate(20),
+            'sliders' => Slider::latest()->paginate(20),
         ];
 
         return view('dashboard.slider.index')->with(array_merge($this->data, $data));
@@ -32,14 +32,20 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'slider_title' => 'required',
+            'slider_image' => 'required|mimes:jpg,jpeg,png',
+            'status' => 'required'
+        ]);
+
         $path = null;
 
-        if ($request->hasFile('slide_img')) {
-            $path = Utility::file_upload($request, 'slide_img', 'sliders');
+        if ($request->hasFile('slider_image')) {
+            $path = Utility::file_upload($request, 'slider_image', 'sliders');
         }
 
         $slider = new Slider();
-        $slider->title = $request->get('title');
+        $slider->title = $request->get('slider_title');
         $slider->slider = $path;
 
         if ($slider->save()) {
@@ -70,15 +76,21 @@ class SliderController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'slider_title' => 'required',
+            'slider_image' => 'required|mimes:jpg,jpeg,png',
+            'status' => 'required'
+        ]);
+        
         $slider = Slider::findOrFail($id);
-        $slider->title = $request->get('title');
+        $slider->title = $request->get('slider_title');
 
-        if ($request->hasFile('slide_img')) {
+        if ($request->hasFile('slider_image')) {
             if ($slider->slider) {
                 unlink($slider->slider);
             }
 
-            $slider->slider = Utility::file_upload($request, 'slide_img', 'sliders');
+            $slider->slider = Utility::file_upload($request, 'slider_image', 'sliders');
         }
 
         $slider->status = $request->get('status');
@@ -103,8 +115,8 @@ class SliderController extends Controller
         $slider = $slider->findOrFail($id);
 
         //file delete
-        if ($slider->slide_photo) {
-            unlink($slider->slide_photo);
+        if ($slider->slider) {
+            unlink($slider->slider);
         }
 
         if ($slider->delete()) {

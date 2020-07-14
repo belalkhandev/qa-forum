@@ -33,8 +33,8 @@
                 <span>Slider Manage</span>
                 <i class="fas fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('category.list') }}">Slider list</a></li>
-                <li><a href="{{ route('category.create') }}">Add slider</a></li>
+                <li><a href="{{ route('slider.list') }}">Slider list</a></li>
+                <li><a href="{{ route('slider.create') }}">Add slider</a></li>
             </ul>
         </li>
     </ul>

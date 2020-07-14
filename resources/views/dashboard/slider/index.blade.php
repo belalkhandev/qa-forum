@@ -3,29 +3,31 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Category List</h3>
-            <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary float-right">Create new</a>
+            <h3 class="box-title">Slider List</h3>
+            <a href="{{ route('slider.create') }}" class="btn btn-sm btn-primary float-right">Add new</a>
         </div>
         <div class="box-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Slide Image</th>
+                        <th>Title</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($categories)
-                        @foreach ($categories as $key => $category)
+                    @if($sliders->isNotEmpty())
+                        @foreach ($sliders as $key => $slider)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{!! styleStatus($category->status) !!}</td>
+                                <td><img src="{{ asset($slider->slider) }}" class="slide-img" alt=""></td>
+                                <td>{{ $slider->title }}</td>
+                                <td>{!! styleStatus($slider->status) !!}</td>
                                 <td class="inline-element">
-                                    <a href="{{ route('category.edit', $category->id) }}" data-toggle="tooltip" title="Delete" data-placement="top" class="custom-btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
-                                    {!! Form::open(['route' => ['category.destroy', $category->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
+                                    <a href="{{ route('slider.edit', $slider->id) }}" data-toggle="tooltip" title="Delete" data-placement="top" class="custom-btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    {!! Form::open(['route' => ['slider.destroy', $slider->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
                                         <button type="submit" class="btn btn-danger custom-btn-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -33,6 +35,10 @@
                                 </td>
                             </tr>
                         @endforeach
+                    @else                         
+                        <tr>
+                            <td colspan="5">No Sliders found</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>

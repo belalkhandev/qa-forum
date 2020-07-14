@@ -6,7 +6,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Create New Category</h3>
-                    <a href="{{ route('category.list') }}" class="btn btn-sm btn-secondary float-right">Class List</a>
+                    <a href="{{ route('category.list') }}" class="btn btn-sm btn-secondary float-right">Category List</a>
                 </div>
                 {!! Form::open(['route' => 'category.store', 'method' => 'POST']) !!}
 
