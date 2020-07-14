@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Profile;
 use App\Models\Role;
+use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,8 @@ class RegisterController extends Controller
         $data = [
             'page_title' => 'Create Account',
             'page_header' => 'Create Account',
-            'categories' => Category::orderBy('name', 'ASC')->get()
+            'categories' => Category::orderBy('name', 'ASC')->get(),
+            'sliders' => Slider::latest()->take(5)->get()
         ];
 
         return view('frontend.register')->with($data);

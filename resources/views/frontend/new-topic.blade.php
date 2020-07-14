@@ -17,7 +17,6 @@
                         @else
                         <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
                         @endif
-                        <div class="status red">&nbsp;</div>
                     </div>
                 </div>
                 <div class="posttext pull-left">

@@ -16,7 +16,7 @@ class Utility
         if ($request->hasFile($file_name)) {
             $file = $request->$file_name;
             $filename = time() . '_' . $file->getClientOriginalName();
-            $up_path = "uploads/".date('Y-m')."/$upload_dir/";
+            $up_path = "uploads/".date('Y-m')."/$upload_dir";
             $path = $file->move($up_path, $filename);
             if ($file->getError()) {
                 $request->session()->flash('warning', $file->getErrorMessage());

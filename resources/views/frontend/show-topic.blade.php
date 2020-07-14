@@ -16,7 +16,6 @@
                     @else
                         <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
                     @endif
-                    <div class="status green">&nbsp;</div>
                 </div>
 
                 <div class="avatar-info">
@@ -77,8 +76,7 @@
                                 @endif
                             @else
                                 <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
-                            @endif
-                            <div class="status red">&nbsp;</div>
+                            @endif 
                         </div>
 
                         <div class="avatar-info">
@@ -119,7 +117,7 @@
     
 
     @if(Auth::user())
-        <h3 class="post-section-title">Your Answer</h3>
+        <h3 class="post-section-title">Leave an answer</h3>
         <!-- POST -->
         <div class="post">
             {!! Form::open(['route' => ['fr.topic-answer', $topic->id], 'class' => 'form', 'method' => 'POST']) !!}
@@ -135,7 +133,6 @@
                             @else
                             <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
                             @endif
-                            <div class="status red">&nbsp;</div>
                         </div>
 
                         <div class="avatar-info">

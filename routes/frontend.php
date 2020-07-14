@@ -29,7 +29,6 @@ Route::middleware(['auth'])->group(function () {
 
     // notification loading
     Route::get('notifications', 'Web\NotificationController@index')->name('fr.notifications');
-    Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
     Route::post('count-notification', 'Web\NotificationController@countNotification')->name('fr.notification.count');
 
     //profile update
@@ -37,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile', 'Web\ProfileController@update')->name('fr.profile.update');
 
 });
+
+Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
 
 Route::get('topic-show/{id}', 'Web\TopicController@show')->name('fr.topic.show');
 Route::get('topics/category/{id}', 'Web\TopicController@categoryTopic')->name('fr.topic.category');

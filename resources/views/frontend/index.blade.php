@@ -16,7 +16,6 @@
                         @else
                             <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
                         @endif
-                        <div class="status green">&nbsp;</div>
                     </div>
                     <div class="avatar-info">
                         <h4>{{ $question->user->name }}</h4>

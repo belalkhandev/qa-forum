@@ -1,13 +1,25 @@
 <!-- Slider -->
 <div class="tp-banner-container">
     <div class="tp-banner" >
-        <ul>	
+        <ul>  
+            
+            @if($sliders->isNotEmpty())
+                @foreach ($sliders as $slider)
+                        <!-- SLIDE  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                    <!-- MAIN IMAGE -->
+                    <img src="{{ asset(str_replace('\\', '/',$slider->slider)) }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <!-- LAYERS -->
+                </li>
+                @endforeach
+            @else 
             <!-- SLIDE  -->
             <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
                 <!-- MAIN IMAGE -->
                 <img src="{{ asset('frontend/assets/img/slide.jpg') }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
             </li>
+            @endif
         </ul>
     </div>
 </div>
@@ -61,9 +73,6 @@
                             <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="" /> 
                             @endif
                         </a>
-                            
-                            <b class="caret"></b>
-                        <div class="status green">&nbsp;</div>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fr.profile') }}">My Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-2" href="{{ route('fr.change-password') }}">Change password</a></li>
@@ -170,27 +179,30 @@
                 }
             });
 
-            // get notification in a certain time
-            setInterval(function () {
-                $.ajax("{{ route('fr.notification.count') }}", {
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                    },
-                    beforeSend: function () {
-                        $('#notification_dropdown i.fa.fa-bell').html('');
-                    },
-                    success: function (res, status, xhr) {
-                        if (status = 'success') {
-                            if (res > 0) {
-                                $('#notification_dropdown i.fa.fa-bell').html('<span class="notification_count">'+res+'</span>');
-                            }
-                        }
-                    }
-                });
-            }, 10000);
+            
 
         });
     }(jQuery));
+
+    // get notification in a certain time
+    setInterval(function () {
+        console.log('test');
+        $.ajax("{{ route('fr.notification.count') }}", {
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+            },
+            beforeSend: function () {
+                $('#notification_dropdown i.fa.fa-bell').html('');
+            },
+            success: function (res, status, xhr) {
+                if (status = 'success') {
+                    if (res > 0) {
+                        $('#notification_dropdown i.fa.fa-bell').html('<span class="notification_count">'+res+'</span>');
+                    }
+                }
+            }
+        });
+    }, 5000);
 </script>
 @endpush

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class LoginController extends Controller
         $data = [
             'page_title' => 'Sign In',
             'page_header' => 'Sign In',
+            'sliders' => Slider::latest()->take(2)->get()
         ];
 
         return view('frontend.login')->with($data);

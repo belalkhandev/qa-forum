@@ -41,6 +41,7 @@ class NotificationController extends Controller
     public function getNotification()
     {
         $output = '';
+
         if (Auth::user()) {
             $notifications =  Notification::where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(7)->get();
             if ($notifications->isNotEmpty()) {
@@ -72,7 +73,7 @@ class NotificationController extends Controller
         }
 
         return response()->json([
-            'message' => 'Unathorized action'
+            'message' => null
         ]);
     }
 

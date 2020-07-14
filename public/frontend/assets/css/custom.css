@@ -1491,8 +1491,8 @@ input[name="topic_title"] {
 }
 
 .post .avatar img {
-    width: 100%;
-    height: auto;
+    width: 35px;
+    height: 35px;
 }
 
 #notification_dropdown i.fa.fa-bell {
