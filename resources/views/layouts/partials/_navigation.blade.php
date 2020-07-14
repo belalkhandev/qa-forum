@@ -37,7 +37,19 @@
             </ul>
         </li>
 
-        {{-- slider list --}}
+        {{-- topics manage --}}
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="fab fa-accusoft"></i>
+                <span>Topic Manage</span>
+                <i class="fas fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('topic.question.list') }}">Questions</a></li>
+                <li><a href="{{ route('topic.answer.list') }}">Answers</a></li>
+            </ul>
+        </li>
+
+        {{--user manage --}}
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="fab fa-accusoft"></i>

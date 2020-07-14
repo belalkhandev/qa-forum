@@ -57,6 +57,12 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::delete('/destroy/{id}', 'Admin\SliderController@destroy')->name('slider.destroy');
             });
 
+            //topic manage
+            Route::prefix('topic')->group(function () {
+                Route::get('/questions', 'Admin\TopicController@topicQuestion')->name('topic.question.list');
+                Route::get('/answers', 'Admin\TopicController@topicAnswer')->name('topic.answer.list');
+            });
+
             //slider manage
             Route::prefix('users')->group(function () {
                 Route::get('/list', 'Admin\UserController@index')->name('user.list');
@@ -64,6 +70,7 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::delete('/active/{id}', 'Admin\UserController@userActive')->name('user.active');
             });
             
+
         });
 
     });
