@@ -25,5 +25,17 @@
                 <li><a href="{{ route('sub-category.create') }}">Sub Category Create</a></li>
             </ul>
         </li>
+
+        {{-- slider list --}}
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="fab fa-accusoft"></i>
+                <span>Slider Manage</span>
+                <i class="fas fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('category.list') }}">Slider list</a></li>
+                <li><a href="{{ route('category.create') }}">Add slider</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

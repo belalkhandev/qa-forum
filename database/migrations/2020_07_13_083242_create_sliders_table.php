@@ -17,6 +17,7 @@ class CreateSlidersTable extends Migration
             $table->bigIncrements('id');
             $table->string('slider');
             $table->string('title')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

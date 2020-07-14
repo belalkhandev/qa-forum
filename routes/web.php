@@ -46,6 +46,16 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::post('/edit/{id}', 'Admin\SubCategoryController@update')->name('sub-category.update');
                 Route::delete('/destroy/{id}', 'Admin\SubCategoryController@destroy')->name('sub-category.destroy');
             });
+
+            //slider manage
+            Route::prefix('slider')->group(function () {
+                Route::get('/list', 'Admin\SliderController@index')->name('slider.list');
+                Route::get('/create', 'Admin\SliderController@create')->name('slider.create');
+                Route::post('/create', 'Admin\SliderController@store')->name('slider.store');
+                Route::get('/edit/{id}', 'Admin\SliderController@edit')->name('slider.edit');
+                Route::post('/edit/{id}', 'Admin\SliderController@update')->name('slider.update');
+                Route::delete('/destroy/{id}', 'Admin\SliderController@destroy')->name('slider.destroy');
+            });
             
         });
 
