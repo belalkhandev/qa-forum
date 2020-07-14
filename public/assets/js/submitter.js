@@ -61,7 +61,6 @@ submit_form = function (t, e) {
                     if (ret.redirect && res) {
                         redirect(ret.redirect);
                     }
-                    $('#select_result').html('');
                 }, function (dismiss) {
                     if (ret.redirect && dismiss === 'timer') {
                         redirect(ret.redirect);
@@ -183,22 +182,21 @@ function deleteSwal(t, e) {
 }
 
 
-
 /**
  * Delete Function
  * @param t
  * @param e
  */
-function topicFileDelete(t, e) {
+function userActivate(t, e) {
     e.preventDefault();
     Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: "You also can be able to revert this!",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#37A000',
+        confirmButtonColor: '#4fa7f3',
         cancelButtonColor: '#d57171',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, I am sure'
     }).then(function (stat) {
 
         if (stat.value != undefined && stat.value) {
@@ -222,19 +220,23 @@ function topicFileDelete(t, e) {
                     let type = res.type;
                     let title = res.title;
                     if (res.type == 'success') {
-                        $(t).parents('.file-item').remove();
+
                     }
                     swal.fire(
                         title,
                         res.msg,
                         type
-                    );
+                    )   
                 },
-                complete: function () {
-                    $(t).removeAttr('disabled');
+                complete: function (res) {
+                    if(res.responseJSON.redirect) {
+                        redirect(res.responseJSON.redirect);
+                    }
                 }
             });
         }
 
     });
 }
+
+

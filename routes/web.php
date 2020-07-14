@@ -56,6 +56,13 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::post('/edit/{id}', 'Admin\SliderController@update')->name('slider.update');
                 Route::delete('/destroy/{id}', 'Admin\SliderController@destroy')->name('slider.destroy');
             });
+
+            //slider manage
+            Route::prefix('users')->group(function () {
+                Route::get('/list', 'Admin\UserController@index')->name('user.list');
+                Route::delete('/deactive/{id}', 'Admin\UserController@deActive')->name('user.deactive');
+                Route::delete('/active/{id}', 'Admin\UserController@userActive')->name('user.active');
+            });
             
         });
 
