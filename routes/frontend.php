@@ -32,10 +32,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('count-notification', 'Web\NotificationController@countNotification')->name('fr.notification.count');
 
     //profile update
-    Route::get('profile', 'Web\ProfileController@index')->name('fr.profile');
-    Route::post('profile', 'Web\ProfileController@update')->name('fr.profile.update');
+    Route::get('profile/edit', 'Web\ProfileController@editProfile')->name('fr.profile.edit');
+    Route::post('profile/edit', 'Web\ProfileController@update')->name('fr.profile.update');
 
 });
+
+Route::get('profile/{id}', 'Web\ProfileController@index')->name('fr.profile');
 
 Route::post('get-notification', 'Web\NotificationController@getNotification')->name('fr.get.notification');
 

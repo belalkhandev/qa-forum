@@ -11,7 +11,20 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index($id)
+    {
+        $profile = Profile::where('user_id', $id)->first();
+
+        $data = [
+            'page_title' => 'Profile',
+            'page_header' => 'Profile',
+            'profile' => $profile
+        ];
+
+        return view('frontend.profile')->with(array_merge($this->data, $data));
+    }
+
+    public function editProfile()
     {
         if (!Auth::user()) {
             abort(401, 'Unauthorized');
@@ -20,12 +33,12 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', Auth::user()->id)->first();
 
         $data = [
-            'page_title' => 'Profile page',
-            'page_header' => 'Profile page',
+            'page_title' => 'Edit profile',
+            'page_header' => 'Edit profile',
             'profile' => $profile
         ];
 
-        return view('frontend.profile')->with(array_merge($this->data, $data));
+        return view('frontend.profile-edit')->with(array_merge($this->data, $data));
     }
 
     public function update(Request $request)
@@ -71,7 +84,7 @@ class ProfileController extends Controller
                 'type' => 'success',
                 'title' => 'Updated!',
                 'message' => 'Profile Updated successfully',
-                'redirect' => route('fr.profile')
+                'redirect' => route('fr.profile', $profile->user_id)
             ]);
 
 

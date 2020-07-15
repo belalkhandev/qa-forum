@@ -1518,3 +1518,21 @@ input[name="topic_title"] {
     max-height: 230px;
     overflow-y: auto;
 }
+
+.user-profile-table {
+    background: #fff;
+}
+
+.user-profile-table ul {
+    list-style: none;
+    margin: 0px;
+    text-align: left
+}
+
+.user-profile-table ul li i.fa {
+    width: 15px;
+}
+
+.user-profile-table ul li {
+    padding: 2px 0px;
+}   

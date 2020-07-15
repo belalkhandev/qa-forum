@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {!! Form::open(['class' => 'profile-form', 'method' => 'POST', 'route' => 'fr.profile.update']) !!}
             <div class="col-md-3">
                 <div class="profile_img">
                     @if($profile->photo)
@@ -15,98 +14,75 @@
                 <div class="avatar-name">
                     <h3>{{ $profile->first_name.' '.$profile->last_name }}</h3>
                 </div>
-                <div class="new-photo">
-                    <label for="">Update Photo</label><br>
-                    <input type="file" name="profile_photo">
-                    <span class="text-danger"></span>
-                </div>
             </div>
             <div class="col-md-9">
                 <h3 class="post-section-title">Profile information</h3>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->first_name }}" name="first_name" placeholder="First name" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->last_name }}" name="last_name" placeholder="Last name" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->user->username }}" placeholder="Username" readonly class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->user->email }}" placeholder="Email" readonly class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->qalification }}" name="qualification" placeholder="Educational qualification" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->district }}" name="home_district" placeholder="Home District" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->address }}" name="current_address" placeholder="Current address" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
+                        <table class="table user-profile-table">
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ $profile->user->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ $profile->user->email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Educational Qualification</th>
+                                <td>{{ $profile->qualification }}</td>
+                            </tr>
+                            <tr>
+                                <th>Home District</th>
+                                <td>{{ $profile->district }}</td>
+                            </tr>
+                            <tr>
+                                <th>Current Address</th>
+                                <td>{{ $profile->address }}</td>
+                            </tr>
+                            <tr>
+                                <th>Social Link</th>
+                                <td>
+                                    <ul>
+                                        @if($profile->website)
+                                            <li>
+                                                <i class="fa fa-globe"></i>
+                                            <span>{{ $profile->website }}</span>
+                                            </li>
+                                        @endif
+                                        @if($profile->facebook)
+                                            <li>
+                                                <i class="fa fa-facebook"></i>
+                                            <span>{{ $profile->facebook }}</span>
+                                            </li>
+                                        @endif
+                                        @if($profile->youtube)
+                                            <li>
+                                                <i class="fa fa-youtube"></i>
+                                            <span>{{ $profile->youtube }}</span>
+                                            </li>
+                                        @endif
+                                        @if($profile->linkedin)
+                                            <li>
+                                                <i class="fa fa-linkedin"></i>
+                                            <span>{{ $profile->linkedin }}</span>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->website }}" name="website_link" placeholder="Website link" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->facebook }}" name="facebook_link" placeholder="Facebook link" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->youtube }}" name="youtube_link" placeholder="Youtube link" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" value="{{ $profile->linkedin }}" name="linkedin_link" placeholder="Linkedin link" class="form-control">
-                            <span class="text-dangere"></span>
-                        </div>
-                    </div>
-                </div>
+                
+                @if(Auth::user() && Auth::user()->id == $profile->user_id)
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button class="btn btn-primary" onclick="submit_form(this, event)">Save changes</button>
+                        <a href="{{ route('fr.profile.edit') }}" class="btn btn-primary">Edit Profile</a>
                     </div>
-                </div>              
+                </div>  
+                @endif            
             </div>
-            
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection

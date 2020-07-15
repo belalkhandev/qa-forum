@@ -48,6 +48,7 @@
                                         </button>
                                     {!! Form::close() !!}
                                     @endif
+                                    <a href="{{ route('fr.profile', $user->id) }}" target="_blank" class="btn btn-warning custom-btn-sm"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
