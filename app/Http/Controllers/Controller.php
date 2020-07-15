@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\Slider;
@@ -9,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
 {
@@ -25,6 +27,11 @@ class Controller extends BaseController
      */
     public function __construct()
     {
+        $rankings = Answer::select(DB::raw('answers.*, count(*) as answer_count'))
+                        ->groupBy('user_id')
+                        ->orderBy('answer_count', 'DESC')
+                        ->take(10)
+                        ->get();
         // Default variables
         $this->data = [
             'page_title' => 'Knowledge sharing',
@@ -33,6 +40,8 @@ class Controller extends BaseController
             'sliders' => Slider::latest()->take(2)->get(),
             'related_posts' => [],
             'latest_posts' => Question::latest()->take(5)->get(),
+            'rankings' => $rankings
         ];
+
     }
 }

@@ -1,6 +1,34 @@
 <div class="col-lg-4 col-md-4">
 
-    <!-- -->
+    {{-- rankings --}}
+    @if($rankings->isNotEmpty())
+        <div class="sidebarblock">
+            <h3>Ranking</h3>
+            <div class="divline"></div>
+            <div class="blocktxt">
+                <div class="users-rank">
+                    @foreach ($rankings as $key => $rank)
+                        <div class="user-rank">
+                            <div class="user-rank-img">
+                                @if($rank->user->profile)
+                                    @if($rank->user->profile->photo)
+                                        <img src="{{ asset($rank->user->profile->photo) }}" alt="">
+                                    @else
+                                        <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
+                                    @endif
+                                @else
+                                <img src="{{ asset('frontend/assets/img/avatar-blank.jpg') }}" alt="">
+                                @endif
+                                <a href="{{ route('fr.profile', $rank->user->id) }}"><span>{{ $rank->user->name }}</span></a>
+                            </div>
+                            <div class="user-rank-answer">{{ $rank->answer_count }}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+    <!-- categories -->
     <div class="sidebarblock">
         <h3>Categories</h3>
         <div class="divline"></div>
