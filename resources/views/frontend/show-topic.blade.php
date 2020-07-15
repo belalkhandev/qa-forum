@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="avatar-info">
-                    <h4>{{ $topic->user->name }}</h4>
+                    <h4><a href="{{ route('fr.profile',  $topic->user->id) }}">{{ $topic->user->name }}</a></h4>
                 </div>
 
                 <div class="category-name">
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="avatar-info">
-                            <h4>{{ $answer->user->name }}</h4>
+                            <h4><a href="{{ route('fr.profile',  $answer->user->id) }}">{{ $answer->user->name }}</a></h4>
                         </div>
                     </div>
                     <div class="posttext pull-left">

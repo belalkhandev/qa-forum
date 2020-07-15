@@ -12,7 +12,7 @@
                         <div class="status green">&nbsp;</div>
                     </div>
                     <div class="avatar-info">
-                        <h4>{{ $question->user->name }}</h4>
+                        <h4><a href="{{ route('fr.profile',  $question->user->id) }}">{{ $question->user->name }}</a></h4>
                     </div>
                     <div class="category-name">
                         <span>{{ $question->category->name }}</span>
