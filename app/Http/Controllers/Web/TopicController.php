@@ -7,6 +7,7 @@ use App\Models\Answer;
 use App\Models\Notification;
 use App\Models\Question;
 use App\Models\QuestionVote;
+use App\Models\SubCategory;
 use App\Services\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,63 @@ class TopicController extends Controller
         return response()->json([
             'type' => 'error',
             'title' => 'Failed!',
-            'message' => 'Registration failed'
+            'message' => 'Failed to post topic'
+        ]);
+    }
+
+    public function editTopic($id)
+    {
+        $question = Question::findOrFail($id);
+        $sub_categories = SubCategory::where('category_id', $question->category_id)->orderBy('name', 'ASC')->get();
+
+        $data = [
+            'page_title' => 'Edit Topic',
+            'page_header' => 'Edit topic Topic',
+            'topic' => $question,
+            'sub_categories' => $sub_categories
+        ];
+
+        return view('frontend.edit-topic')->with(array_merge($this->data, $data));
+    }
+
+    public function updateTopic(Request $request, $id)
+    {
+        $this->validate($request, [
+            'topic_title' => 'required',
+            'category' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5120'
+        ]);
+
+        // uplaod file        
+        $topic = Question::findOrFail($id);
+        if ($request->hasFile('image')) {
+            if ($topic->photo) {
+                unlink($topic->photo);
+            }
+
+            $path = Utility::file_upload($request, 'image', 'questions');
+            $topic->photo = $path;
+        }
+
+        $topic->user_id = Auth::user()->id;
+        $topic->category_id = $request->get('category');
+        $topic->sub_category_id = $request->get('subcategory');
+        $topic->title = $request->get('topic_title');
+        $topic->description = $request->get('description');
+        
+
+        if ($topic->save()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Topic Updated!',
+                'message' => 'Successfully topic updated'
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'error',
+            'title' => 'Failed!',
+            'message' => 'Updated failed'
         ]);
     }
 

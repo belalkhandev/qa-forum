@@ -103,23 +103,23 @@
                                 </tr>
                             </thead>
                             @if($questions)
-                            <tbody>
-                                @foreach ($questions as $key => $question)
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td><a href="{{ route('fr.topic.show', $question->id) }}">{{ $question->title }}</a></td>
-                                        <td>{{ count($question->answers) }}</td>
-                                        <td style="display: flex;align-items: center;justify-content: space-evenly ">
-                                            <a href="{{ route('fr.topic.edit', $question->id) }}" class="btn btn-custom-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                            {!! Form::open(['route' => ['fr.topic.question.destroy', $question->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
-                                                <button type="submit" class="btn btn-danger btn-custom-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            {!! Form::close() !!}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                <tbody>
+                                    @foreach ($questions as $key => $question)
+                                        <tr>
+                                            <td>{{ $key+1 }}</td>
+                                            <td><a href="{{ route('fr.topic.show', $question->id) }}">{{ $question->title }}</a></td>
+                                            <td>{{ count($question->answers) }}</td>
+                                            <td style="display: flex;align-items: center;justify-content: space-evenly ">
+                                                <a href="{{ route('fr.topic.edit', $question->id) }}" class="btn btn-custom-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                                {!! Form::open(['route' => ['fr.topic.question.destroy', $question->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
+                                                    <button type="submit" class="btn btn-danger btn-custom-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </button>
+                                                {!! Form::close() !!}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             @endif
                         </table>
                     </div>
