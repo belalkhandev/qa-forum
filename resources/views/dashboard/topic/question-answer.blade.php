@@ -7,11 +7,13 @@
             {{-- <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary float-right">Create new</a> --}}
         </div>
         <div class="box-body">
+            <b>Question: <i> {{ $question->title }}</i></b>
+            <br>
+            <br>
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Question</th>
                         <th>Answer</th>
                         <th></th>
                     </tr>
@@ -21,8 +23,7 @@
                         @foreach ($answers as $key => $answer)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $answer->question->title }}</td>
-                                <td>{{ Str::limit($answer->description, 50, '.......') }}</td>
+                                <td>{{ $answer->description }}</td>
                                 <td class="inline-element">
                                     
                                 </td>

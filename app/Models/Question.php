@@ -25,4 +25,9 @@ class Question extends Model
     {
         return $this->belongsTo(SubCategory::class, 'sub_category_id', 'id');
     }
+
+    public function questionVotes()
+    {
+        return $this->hasMany(QuestionVote::class, 'question_id', 'id');
+    }
 }

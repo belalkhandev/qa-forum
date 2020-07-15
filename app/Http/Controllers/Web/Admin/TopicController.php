@@ -20,6 +20,48 @@ class TopicController extends Controller
         return view('dashboard.topic.question')->with(array_merge($this->data, $data));
     }
 
+    public function topicQuestionAnswer($question_id)
+    {
+        $data = [
+            'page_title' => 'Topic Question',
+            'page_header' => 'Topic Question',
+            'question' => Question::find($question_id),
+            'answers' => Answer::where('question_id', $question_id)->latest()->paginate(20),
+        ];
+
+        return view('dashboard.topic.question-answer')->with(array_merge($this->data, $data));
+    }
+
+    public function topicQuestionShow($question_id)
+    {
+        $data = [
+            'page_title' => 'Topic Question',
+            'page_header' => 'Topic Question',
+            'question' => Question::find($question_id),
+        ];
+
+        return view('dashboard.topic.question-show')->with(array_merge($this->data, $data));
+    }
+
+    public function destroyQuestion(Question $question, $question_id)
+    {
+        $question = $question->find($question_id);
+
+        if ($question->delete()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Success!',
+                'message' => 'Question deleted Successfully'
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'error',
+            'title' => 'Failed!',
+            'message' => 'Question failed to delete'
+        ]);
+    }
+
     public function topicAnswer()
     {
         $data = [

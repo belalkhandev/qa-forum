@@ -3,8 +3,7 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Questions ({{ count($questions) }})</h3>
-            {{-- <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary float-right">Create new</a> --}}
+            <h3 class="box-title">Show Question</h3>
         </div>
         <div class="box-body">
             <table class="table">
@@ -12,20 +11,17 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Answer</th>
+                        <th>Description</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($questions)
-                        @foreach ($questions as $key => $question)
+                    @if($question)
                             <tr>
-                                <td>{{ $key+1 }}</td>
+                                <td>#</td>
                                 <td>{{ $question->title }}</td>
-                                <td><a href="{{ route('topic.question.answer', $question->id) }}" class="btn btn-primary btn-sm ">Answers ({{ count($question->answers) }}</a></td>                                
+                                <td>{{ $question->description }}</td>                                
                                 <td class="inline-element">
-                                    <a href="{{ route('topic.question.show', $question->id) }}" data-toggle="tooltip" title="Delete" data-placement="top" class="custom-btn-sm btn btn-primary"><i class="fas fa-eye"></i></a>
-                                    
                                     {!! Form::open(['route' => ['topic.question.destroy', $question->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
                                         <button type="submit" class="btn btn-danger custom-btn-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
                                             <i class="fas fa-trash"></i>
@@ -33,11 +29,10 @@
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
-                        @endforeach
                     @endif
                 </tbody>
             </table>
         </div>
-        <div class="box-footer">{{ $questions->links() }}</div>
+        <div class="box-footer"></div>
     </div>
 @endsection

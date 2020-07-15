@@ -1513,3 +1513,8 @@ input[name="topic_title"] {
 .form-control.no-border {
     border: 0px solid #fff;
 }
+
+.notification-box-body {
+    max-height: 230px;
+    overflow-y: auto;
+}
