@@ -138,13 +138,16 @@ class TopicController extends Controller
         $category = $topic->category_id;
         $subCategory = $topic->sub_category_id;
         // related topics
-        $related_posts = $questions = Question::whereHas('category', function ($q) use ($category) {
-            $q->where('id', $category);
-        })
-        ->orWhereHas('subCategory', function ($q) use ($subCategory) {
-            $q->where('id', $subCategory);
-        })
-        ->get();
+        $related_posts = $questions = Question::where('id', '!=', $topic->id)
+            ->whereHas('category', function ($q) use ($category) {
+                $q->where('id', $category);
+            })
+            ->orWhereHas('subCategory', function ($q) use ($subCategory) {
+                $q->where('id', $subCategory);
+            })
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
 
         $data = [
             'page_title' => 'Show topic',
