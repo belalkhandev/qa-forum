@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Profile;
+use App\Models\Question;
 use App\Models\Role;
 use App\Models\Slider;
 use App\Models\User;
@@ -20,7 +21,9 @@ class RegisterController extends Controller
             'page_title' => 'Create Account',
             'page_header' => 'Create Account',
             'categories' => Category::orderBy('name', 'ASC')->get(),
-            'sliders' => Slider::latest()->take(5)->get()
+            'sliders' => Slider::latest()->take(5)->get(),
+            'related_posts' => [],
+            'latest_posts' => Question::latest()->take(5)->get(),
         ];
 
         return view('frontend.register')->with($data);
