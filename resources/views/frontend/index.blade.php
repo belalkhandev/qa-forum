@@ -2,6 +2,7 @@
 
 @section('content')
     @if($questions->isNotEmpty())
+        {{ $questions->links() }}
         @foreach ($questions as $key => $question)
         <div class="post">
             <div class="wrap-ut pull-left">
@@ -45,6 +46,7 @@
             <div class="clearfix"></div>
         </div><!-- POST -->
         @endforeach
+        {{ $questions->links() }}
         @else 
         <h3>No Topic Found</h3>
     @endif

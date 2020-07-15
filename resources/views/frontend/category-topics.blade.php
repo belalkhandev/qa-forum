@@ -2,6 +2,7 @@
 
 @section('content')
     @if($questions->isNotEmpty())
+        {{ $questions->links() }}
         @foreach ($questions as $key => $question)
         <div class="post">
             <div class="wrap-ut pull-left">
