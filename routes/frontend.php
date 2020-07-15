@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('topic-answer/{id}', 'Web\TopicController@topicAnswer')->name('fr.topic-answer');
     Route::get('edit-topic/{id}', 'Web\TopicController@editTopic')->name('fr.topic.edit');
     Route::post('edit-topic/{id}', 'Web\TopicController@updateTopic')->name('fr.topic.update');
+    Route::get('edit-answer/{id}', 'Web\TopicController@editAnswer')->name('fr.answer.edit');
+    Route::post('edit-answer/{id}', 'Web\TopicController@updateAnswer')->name('fr.answer.update');
     Route::delete('topic-question/destroy/{id}', 'Web\Admin\TopicController@destroyQuestion')->name('fr.topic.question.destroy');
     Route::delete('topic-answer/destroy/{id}', 'Web\Admin\TopicController@destroyAnswer')->name('fr.topic.answer.destroy');
 

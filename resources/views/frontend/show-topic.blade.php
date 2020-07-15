@@ -53,7 +53,16 @@
                 <label for="answer" class="ans-label"><i class="fa fa-reply"></i></label>
             </div>
 
-            <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : {{ user_formatted_datetime($topic->created_at) }}</div>
+            <div class="posted pull-left">
+                <i class="fa fa-clock-o"></i> 
+                Posted on : {{ user_formatted_datetime($topic->created_at) }}
+            </div>
+
+            @if(Auth::user() && Auth::user()->id == $topic->user_id)
+                <div class="next pull-right">
+                    <a href="{{ route('fr.topic.edit', $topic->id) }}" class="post-edit-btn"><i class="fa fa-pencil"> Edit</i></a>
+                </div>
+            @endif
 
             <div class="clearfix"></div>
         </div>
@@ -108,6 +117,11 @@
 
                     <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : {{ user_formatted_datetime($answer->created_at) }}</div>
 
+                    @if(Auth::user() && Auth::user()->id == $answer->user_id)
+                        <div class="next pull-right">
+                            <a href="{{ route('fr.answer.edit', $answer->id) }}" class="post-edit-btn"><i class="fa fa-pencil"> Edit</i></a>
+                        </div>
+                    @endif
                     <div class="clearfix"></div>
                 </div>
             </div>

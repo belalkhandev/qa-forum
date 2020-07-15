@@ -1591,3 +1591,12 @@ input[name="topic_title"] {
 .table-condensed th {
     font-size: 14px;
 }
+
+.post-edit-btn {
+    font-size: 13px !important;
+    color: #9e9e9e !important;
+}
+
+.post-edit-btn:hover {
+    color: #009688 !important;
+}

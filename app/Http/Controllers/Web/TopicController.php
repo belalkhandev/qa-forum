@@ -191,6 +191,48 @@ class TopicController extends Controller
         ]);
     }
 
+    public function editAnswer($id)
+    {
+
+        $answer = Answer::findOrFail($id);
+
+
+        $data = [
+            'page_title' => 'Edit Answer',
+            'page_header' => 'Edit Answer',
+            'answer' => $answer,
+        ];
+
+        return view('frontend.edit-answer')->with(array_merge($this->data, $data));
+    }
+
+    public function updateAnswer(Request $request, $id)
+    {
+        $this->validate($request, [
+            'answer' => 'required'
+        ], ['answer.required' => 'Please write your answer!']);
+
+        $answer = Answer::find($id);
+        $answer->description = $request->get('answer');
+
+        if ($answer->save()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Updated',
+                'message' => 'Answer updated',
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'error',
+            'title' => 'Opps! Failed',
+            'message' => 'Something went wrong'
+        ]);
+
+    }
+
+
+
     public function categoryTopic($id)
     {
          $data = [

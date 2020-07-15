@@ -151,7 +151,7 @@
                                         <td>{{ Str::limit($answer->description, 80, '....') }}</td>
                                         <td><a href="{{ route('fr.topic.show', $answer->question->id) }}">{{ $answer->question->title }}</a></td>
                                         <td style="display: flex;align-items: center;justify-content: space-evenly ">
-                                            <a href="{{ route('fr.topic.edit', $answer->id) }}" class="btn btn-custom-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('fr.answer.edit', $answer->id) }}" class="btn btn-custom-sm btn-primary"><i class="fa fa-edit"></i></a>
                                             {!! Form::open(['route' => ['fr.topic.answer.destroy', $answer->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
                                                 <button type="submit" class="btn btn-danger btn-custom-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
                                                     <i class="fa fa-trash-o"></i>
