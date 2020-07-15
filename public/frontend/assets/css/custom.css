@@ -1535,4 +1535,59 @@ input[name="topic_title"] {
 
 .user-profile-table ul li {
     padding: 2px 0px;
-}   
+} 
+
+.btn-custom-sm {
+    padding: 2px 5px;
+}
+
+/* customize style */
+
+.table {
+    background: #f6f6f6;
+    border-collapse: collapse;
+    border-spacing: 0em .5em;
+    font-size: 14px;
+}
+
+.table th, .table td {
+    border: 0px solid #f1f1f1;
+    padding: 7px 10px;
+}
+
+.table th {
+    padding: 10px;
+}
+
+.table thead, .table th, .table thead th {
+    border-bottom: 0px solid #f1f1f1;
+    background: #15c39a;
+    color: #fff;
+}
+
+.table tr {
+    background: #fff;
+}
+
+.table tr:nth-child(2n+1) {
+    background: #f6f6f6;
+}
+
+.table tr:hover {
+    background: #f1f1f1;
+    transition: 0.25s
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #e4e4e4;
+}
+
+.table-condensed td,
+.table-condensed th {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.table-condensed th {
+    font-size: 14px;
+}

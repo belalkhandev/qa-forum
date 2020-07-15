@@ -43,7 +43,7 @@
                                     {!! Form::close() !!}
                                     @else 
                                     {!! Form::open(['route' => ['user.active', $user->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
-                                        <button type="submit" class="btn btn-danger custom-btn-sm" onclick="userActivate(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
+                                        <button type="submit" class="btn btn-danger custom-btn-sm" onclick="userActivate(this, event)" data-toggle="tooltip" title="Active user" data-placement="top">
                                             <i class="fas fa-check"></i>
                                         </button>
                                     {!! Form::close() !!}

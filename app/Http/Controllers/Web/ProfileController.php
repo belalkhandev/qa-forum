@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Profile;
+use App\Models\Question;
 use App\Services\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +16,21 @@ class ProfileController extends Controller
     public function index($id)
     {
         $profile = Profile::where('user_id', $id)->first();
+        $questions = null;
+        $answers = null;
+
+        if (Auth::user() && Auth::user()->id == $id) {
+            $questions = Question::where('user_id', $id)->latest()->get();
+            $answers = Answer::where('user_id', $id)->latest()->get();
+        }
+
 
         $data = [
             'page_title' => 'Profile',
             'page_header' => 'Profile',
-            'profile' => $profile
+            'profile' => $profile,
+            'questions' => $questions,
+            'answers' => $answers
         ];
 
         return view('frontend.profile')->with(array_merge($this->data, $data));

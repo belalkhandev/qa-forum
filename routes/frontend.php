@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('new-topic', 'Web\TopicController@newTopic')->name('fr.newTopic');
     Route::post('new-topic', 'Web\TopicController@storeNewTopic')->name('fr.newTopic.store');
     Route::post('topic-answer/{id}', 'Web\TopicController@topicAnswer')->name('fr.topic-answer');
+    Route::get('edit-topic/{id}', 'Web\TopicController@editTopic')->name('fr.topic.edit');
+    Route::post('edit-topic/{id}', 'Web\TopicController@updateTopic')->name('fr.topic.update');
+    Route::delete('topic-question/destroy/{id}', 'Web\Admin\TopicController@destroyQuestion')->name('fr.topic.question.destroy');
+    Route::delete('topic-answer/destroy/{id}', 'Web\Admin\TopicController@destroyAnswer')->name('fr.topic.answer.destroy');
 
     Route::post('find-sub-category', 'Web\FindController@getSubCategory')->name('find.subcategory');
 
@@ -34,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     //profile update
     Route::get('profile/edit', 'Web\ProfileController@editProfile')->name('fr.profile.edit');
     Route::post('profile/edit', 'Web\ProfileController@update')->name('fr.profile.update');
+
 
 });
 
