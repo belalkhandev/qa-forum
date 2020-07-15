@@ -135,12 +135,24 @@ class TopicController extends Controller
             $topic->save();
         }
 
+        $category = $topic->category_id;
+        $subCategory = $topic->sub_category_id;
+        // related topics
+        $related_posts = $questions = Question::whereHas('category', function ($q) use ($category) {
+            $q->where('id', $category);
+        })
+        ->orWhereHas('subCategory', function ($q) use ($subCategory) {
+            $q->where('id', $subCategory);
+        })
+        ->get();
+
         $data = [
             'page_title' => 'Show topic',
             'page_header' => 'Show Topic',
             'topic' => $topic,
             'like' => QuestionVote::where('question_id', $id)->where('like', 1)->get()->count(),
             'dislike' => QuestionVote::where('question_id', $id)->where('like', 0)->get()->count(),
+            'related_posts' => $related_posts
         ];
 
         return view('frontend.show-topic')->with(array_merge($this->data, $data));

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Question;
 use App\Models\Slider;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -29,7 +30,9 @@ class Controller extends BaseController
             'page_title' => 'Knowledge sharing',
             'page_header' => 'Knowledge sharing',
             'categories' => Category::orderBy('name', 'asc')->get(),
-            'sliders' => Slider::latest()->take(2)->get()
+            'sliders' => Slider::latest()->take(2)->get(),
+            'related_posts' => [],
+            'latest_posts' => Question::latest()->take(5)->get(),
         ];
     }
 }
