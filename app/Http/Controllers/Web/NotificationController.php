@@ -13,7 +13,8 @@ class NotificationController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $notifications =  Notification::where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(50)->get();
+            $notifications =  Notification::whereHas('question')
+                                ->where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(50)->get();
             $data = [
                 'page_title' => 'Notifications',
                 'page_header' => 'Notifications List',
@@ -43,7 +44,7 @@ class NotificationController extends Controller
         $output = '';
 
         if (Auth::user()) {
-            $notifications =  Notification::where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(7)->get();
+            $notifications =  Notification::whereHas('question')->where('notification_to_user_id', Auth::user()->id)->orderBy('id', 'DESC')->take(7)->get();
             if ($notifications->isNotEmpty()) {
                foreach($notifications as $key => $notification) {
                     $update_notification = Notification::find($notification->id);

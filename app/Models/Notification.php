@@ -15,4 +15,9 @@ class Notification extends Model
     {
         return $this->belongsTo(User::class, 'notification_to_user_id', 'id');
     }
+    
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'notification_for_id', 'id')->where('notification_for', 'question');
+    }
 }

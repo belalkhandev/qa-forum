@@ -64,6 +64,7 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::get('/questions/{id}/show', 'Admin\TopicController@topicQuestionShow')->name('topic.question.show');
                 Route::delete('/question/destroy/{id}', 'Admin\TopicController@destroyQuestion')->name('topic.question.destroy');
                 Route::get('/answers', 'Admin\TopicController@topicAnswer')->name('topic.answer.list');
+                Route::delete('/answer/destroy/{id}', 'Admin\TopicController@destroyAnswer')->name('topic.answer.destroy');
             });
 
             //slider manage

@@ -303,3 +303,9 @@ table.dataTable.no-footer {
 .form-control.no-border {
     border: none;
 }
+
+img.userPhoto {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}

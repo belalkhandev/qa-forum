@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>User</th>
                         <th>Title</th>
                         <th>Answer</th>
                         <th></th>
@@ -21,6 +22,12 @@
                         @foreach ($questions as $key => $question)
                             <tr>
                                 <td>{{ $key+1 }}</td>
+                                <td>
+                                    @if($question->user->profile->photo)
+                                        <img src="{{ asset($question->user->profile->photo) }}" alt="" class="userPhoto">
+                                    @endif
+                                    <span class="userName">{{ $question->user->name }}</span>
+                                </td>
                                 <td>{{ $question->title }}</td>
                                 <td><a href="{{ route('topic.question.answer', $question->id) }}" class="btn btn-primary btn-sm ">Answers ({{ count($question->answers) }}</a></td>                                
                                 <td class="inline-element">

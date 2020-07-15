@@ -9,7 +9,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th style="width:150px">User</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th></th>
@@ -18,7 +18,12 @@
                 <tbody>
                     @if($question)
                             <tr>
-                                <td>#</td>
+                                <td>
+                                    @if($question->user->profile->photo)
+                                        <img src="{{ asset($question->user->profile->photo) }}" alt="" class="userPhoto">
+                                    @endif
+                                    <span class="userName">{{ $question->user->name }}</span>
+                                </td>
                                 <td>{{ $question->title }}</td>
                                 <td>{{ $question->description }}</td>                                
                                 <td class="inline-element">

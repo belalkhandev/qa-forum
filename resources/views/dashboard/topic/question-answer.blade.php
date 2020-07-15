@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>User</th>
                         <th>Answer</th>
                         <th></th>
                     </tr>
@@ -23,9 +24,19 @@
                         @foreach ($answers as $key => $answer)
                             <tr>
                                 <td>{{ $key+1 }}</td>
+                                <td style="width:150px">
+                                    @if($answer->user->profile->photo)
+                                        <img src="{{ asset($answer->user->profile->photo) }}" alt="" class="userPhoto">
+                                    @endif
+                                    <span class="userName">{{ $answer->user->name }}</span>
+                                </td>
                                 <td>{{ $answer->description }}</td>
                                 <td class="inline-element">
-                                    
+                                    {!! Form::open(['route' => ['topic.answer.destroy', $answer->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
+                                        <button type="submit" class="btn btn-danger custom-btn-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endforeach
