@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Profile;
 use App\Models\Question;
@@ -11,12 +12,18 @@ use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
 
     public function showRegisterForm()
     {
+        $rankings = Answer::select(DB::raw('answers.*, count(*) as answer_count'))
+                        ->groupBy('user_id')
+                        ->orderBy('answer_count', 'DESC')
+                        ->take(10)
+                        ->get();
         $data = [
             'page_title' => 'Create Account',
             'page_header' => 'Create Account',
@@ -24,6 +31,7 @@ class RegisterController extends Controller
             'sliders' => Slider::latest()->take(5)->get(),
             'related_posts' => [],
             'latest_posts' => Question::latest()->take(5)->get(),
+            'rankings' => $rankings
         ];
 
         return view('frontend.register')->with($data);
