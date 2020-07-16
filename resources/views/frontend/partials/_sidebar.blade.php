@@ -1,13 +1,13 @@
 <div class="col-lg-4 col-md-4">
 
     {{-- rankings --}}
-    @if($rankings->isNotEmpty())
+    @if($rankings ?? ''->isNotEmpty())
         <div class="sidebarblock">
             <h3>Ranking</h3>
             <div class="divline"></div>
             <div class="blocktxt">
                 <div class="users-rank">
-                    @foreach ($rankings as $key => $rank)
+                    @foreach ($rankings ?? '' as $key => $rank)
                         <div class="user-rank">
                             <div class="user-rank-img">
                                 @if($rank->user->profile)
