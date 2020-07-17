@@ -57,6 +57,11 @@
                 <i class="fas fa-angle-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ route('user.list') }}">User list</a></li>
+                <li>
+                    <a href="{{ route('users.new') }}">
+                        New Registered User
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

@@ -20,7 +20,10 @@ class UserTableSeeder extends Seeder
         // Super Admin
         $superAdmin = new User();
         $superAdmin->name = 'Super Admin';
-        $superAdmin->email = 'superadmin@qaforum.dev';
+        $superAdmin->email = 'superadmin@qaforum.dev'; 
+        $superAdmin->username = 'superadmin';
+        $superAdmin->approve = 1;
+        $superAdmin->approve_at = date('Y-m-d H:i:s');
         $superAdmin->password = bcrypt('password');
         $superAdmin->save();
         $superAdmin->attachRole($role_superadmin);
@@ -29,16 +32,11 @@ class UserTableSeeder extends Seeder
         $admin = new User();
         $admin->name = 'Admin';
         $admin->email = 'admin@qaforum.dev';
+        $admin->username = 'admin';
+        $admin->approve = 1;
+        $admin->approve_at = date('Y-m-d H:i:s');
         $admin->password = bcrypt('password');
         $admin->save();
         $admin->attachRole($role_admin);
-
-        // Teacher
-        $employee = new User();
-        $employee->name = 'John';
-        $employee->email = 'john@qaforum.dev';
-        $employee->password = bcrypt('password');
-        $employee->save();
-        $employee->attachRole($role_user);
     }
 }

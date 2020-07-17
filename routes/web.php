@@ -70,6 +70,7 @@ Route::middleware(['auth:admin'])->group(function () {
             //slider manage
             Route::prefix('users')->group(function () {
                 Route::get('/list', 'Admin\UserController@index')->name('user.list');
+                Route::get('/new-registered', 'Admin\UserController@newRegistered')->name('users.new');
                 Route::delete('/deactive/{id}', 'Admin\UserController@deActive')->name('user.deactive');
                 Route::delete('/active/{id}', 'Admin\UserController@userActive')->name('user.active');
             });
