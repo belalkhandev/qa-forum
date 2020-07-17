@@ -20,6 +20,11 @@
         </div>
         <div class="header-nav">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ({{ $new_users }}) <small>New Users</small> <i class="fas fa-users"></i> 
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="messageDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -32,7 +37,8 @@
                         <div class="dropdown-footer"></div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li
+                 class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="notificationDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                             class="fas fa-bell"></i></a>

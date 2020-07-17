@@ -94,13 +94,20 @@ class LoginController extends Controller
         //was any of those correct ?
         if (Auth::check()) {
             // active or not
-            if (Auth::user()->status != 1) {
+            if (Auth::user()->approve != 1) {
                 Auth::logout();
-                //Nope, something wrong during authentication
+
+                return redirect()->back()->withErrors([
+                    'email' => 'Please wait for admin approval'
+                ]);
+            } else if (Auth::user()->status != 1) {
+                Auth::logout();
+                
                 return redirect()->back()->withErrors([
                     'email' => 'Sorry you are inactive by admin, please contact with our supports'
                 ]);
             }
+
             if (Auth::user()->hasRole('user')) {
                 return redirect()->intended('/');
             }

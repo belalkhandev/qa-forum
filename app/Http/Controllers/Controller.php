@@ -6,6 +6,7 @@ use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\Slider;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -40,7 +41,14 @@ class Controller extends BaseController
             'sliders' => Slider::latest()->take(2)->get(),
             'related_posts' => [],
             'latest_posts' => Question::latest()->take(5)->get(),
-            'rankings' => $rankings
+            'rankings' => $rankings,
+            'new_users' => User::whereHas('roles', function($q){
+                                    $q->where('name', 'user');
+                                })
+                                ->where('approve', 0)
+                                ->where('approve_at', null)
+                                ->get()
+                                ->count(),
         ];
 
     }

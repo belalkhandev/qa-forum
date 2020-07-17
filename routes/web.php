@@ -73,6 +73,8 @@ Route::middleware(['auth:admin'])->group(function () {
                 Route::get('/new-registered', 'Admin\UserController@newRegistered')->name('users.new');
                 Route::delete('/deactive/{id}', 'Admin\UserController@deActive')->name('user.deactive');
                 Route::delete('/active/{id}', 'Admin\UserController@userActive')->name('user.active');
+                Route::post('/approve/{id}', 'Admin\UserController@approve')->name('user.approve');
+                Route::post('/unapprove/{id}', 'Admin\UserController@unApprove')->name('user.unapprove');
             });
             
 

@@ -185,6 +185,21 @@ if (!function_exists('styleStatus')) {
     }
 }
 
+if (!function_exists('styleApproved')) {
+    function styleApproved($value)
+    {
+        $output = '';
+
+        if ($value == 1) {
+            $output .= '<span class="badge badge-success">Approved</span>';
+        } else if ($value == 0) {
+            $output .= '<span class="badge badge-danger">Unapprove</span>';
+        }
+
+        return $output;
+    }
+}
+
 if (!function_exists('makeDropdownList')) {
     function makeDropdownList($objects, $key='id', $value='name')
     {

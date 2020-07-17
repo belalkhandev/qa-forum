@@ -5,7 +5,7 @@
     <div class="post">
         {!! Form::open(['route' => 'fr.register', 'class' => 'form newtopic']) !!}        
             <div class="postinfotop">
-                <h2>Create New Account</h2>
+                <h2>Sign Up</h2>
             </div>
 
             <!-- acc section -->

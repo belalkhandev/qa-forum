@@ -95,7 +95,7 @@
                     <div class="header-nav">
                         <ul>
                             <li><a href="{{ route('fr.login-account') }}">Sign In</a></li>
-                            <li><a href="{{ route('fr.create-account') }}">Create Account</a></li>
+                            <li><a href="{{ route('fr.create-account') }}">Sign Up</a></li>
                         </ul>
                     </div>
                 @endif
