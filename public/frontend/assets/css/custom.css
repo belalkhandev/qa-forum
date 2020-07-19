@@ -1654,3 +1654,28 @@ ul.related_posts_list li p {padding-left: 5px;color: darkgrey;}
     border-radius: 50%;
     padding-top: 4px;
 }
+
+.sign-btn {
+    background-image: linear-gradient(to right,#f11ba6, #f62f4a);
+    padding: 5px 20px !important;
+    color: #fff;
+    border-radius: 25px;
+
+}
+
+.sign-btn.sign-in-btn {
+    background-image: linear-gradient(to right,#3F51B5, #03A9F4);
+}
+
+.sign-btn:hover {
+    background-image: linear-gradient(to left,#f11ba6, #ae3e4d);
+    text-decoration: none;
+    color: #fff;
+    transition: 0.25s;
+}
+
+.sign-btn.sign-in-btn:hover {
+    background-image: linear-gradient(to left,#3F51B5, #03A9F4);    
+    transition: 0.25s;
+}
+

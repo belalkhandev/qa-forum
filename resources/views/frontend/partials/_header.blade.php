@@ -94,8 +94,8 @@
                     @else 
                     <div class="header-nav">
                         <ul>
-                            <li><a href="{{ route('fr.login-account') }}">Sign In</a></li>
-                            <li><a href="{{ route('fr.create-account') }}">Sign Up</a></li>
+                            <li><a href="{{ route('fr.login-account') }}" class="sign-in-btn sign-btn">Sign In</a></li>
+                            <li><a href="{{ route('fr.create-account') }}" class="sign-up-btn sign-btn">Sign Up</a></li>
                         </ul>
                     </div>
                 @endif
