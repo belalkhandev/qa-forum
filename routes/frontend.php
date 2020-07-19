@@ -13,6 +13,7 @@ Route::get('signin', 'Web\Auth\LoginController@showLoginForm')->name('fr.login-a
 Route::post('signin', 'Web\Auth\LoginController@login')->name('fr.login');
 Route::get('create-account', 'Web\Auth\RegisterController@showRegisterForm')->name('fr.create-account');
 Route::post('create-account', 'Web\Auth\RegisterController@store')->name('fr.register');
+Route::get('confirm-register/{uname}', 'Web\Auth\RegisterController@confirmRegister')->name('fr.confirm-account');
 
 
 Route::middleware(['auth'])->group(function () {

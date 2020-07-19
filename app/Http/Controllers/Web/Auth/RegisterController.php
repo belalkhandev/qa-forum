@@ -72,7 +72,7 @@ class RegisterController extends Controller
                 'type' => 'success',
                 'title' => 'Congratulation!',
                 'message' => 'Registration successfully done',
-                'redirect' => route('fr.login-account')
+                'redirect' => route('fr.confirm-account', $user->username)
             ]);
         }
 
@@ -81,7 +81,23 @@ class RegisterController extends Controller
             'title' => 'Failed!',
             'message' => 'Registration failed'
         ]);
-        
-        
+    }
+
+    public function confirmRegister($uname)
+    {
+        $user = User::where('username', $uname)->first();
+
+        if (!$user) {
+            abort(404, 'Page not found');
+        }
+
+        $data = [
+            'page_title' => 'Thank you for registration',
+            'page_header' => 'Thank you for registration',
+            'user' => $user,            
+            'sliders' => Slider::latest()->take(2)->get()
+        ];
+
+        return view('frontend.confirm-account')->with($data);
     }
 }
