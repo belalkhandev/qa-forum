@@ -26,7 +26,7 @@
                                 <td>{{ $slider->title }}</td>
                                 <td>{!! styleStatus($slider->status) !!}</td>
                                 <td class="inline-element">
-                                    <a href="{{ route('slider.edit', $slider->id) }}" data-toggle="tooltip" title="Delete" data-placement="top" class="custom-btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('slider.edit', $slider->id) }}" data-toggle="tooltip" title="Edit" data-placement="top" class="custom-btn-sm btn btn-primary"><i class="fas fa-edit"></i></a>
                                     {!! Form::open(['route' => ['slider.destroy', $slider->id], 'method' => 'DELETE', 'class'=>'inline-el']) !!}
                                         <button type="submit" class="btn btn-danger custom-btn-sm" onclick="deleteSwal(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
                                             <i class="fas fa-trash"></i>

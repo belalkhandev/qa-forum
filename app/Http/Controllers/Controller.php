@@ -24,7 +24,7 @@ class Controller extends BaseController
 
     /**
      * Default Data
-     * @author Belal Khan
+     * @author Ratul Sarkar
      */
     public function __construct()
     {
@@ -38,7 +38,7 @@ class Controller extends BaseController
             'page_title' => 'Knowledge sharing',
             'page_header' => 'Knowledge sharing',
             'categories' => Category::orderBy('name', 'asc')->get(),
-            'sliders' => Slider::latest()->take(2)->get(),
+            'sliders' => Slider::latest()->where('status', 1)->take(2)->get(),
             'related_posts' => [],
             'latest_posts' => Question::latest()->take(5)->get(),
             'rankings' => $rankings,

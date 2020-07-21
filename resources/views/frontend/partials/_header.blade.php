@@ -22,6 +22,10 @@
             @endif
         </ul>
     </div>
+    <div class="site-title">
+        <h2>Knowledge Sharing</h2>
+        <p>A Learning Platform for Secondary & Higher Secondary Students</p>
+    </div>
 </div>
 <!-- //Slider -->
 

@@ -28,7 +28,7 @@ class RegisterController extends Controller
             'page_title' => 'Create Account',
             'page_header' => 'Create Account',
             'categories' => Category::orderBy('name', 'ASC')->get(),
-            'sliders' => Slider::latest()->take(5)->get(),
+            'sliders' => Slider::latest()->where('status', 1)->take(2)->get(),
             'related_posts' => [],
             'latest_posts' => Question::latest()->take(5)->get(),
             'rankings' => $rankings
