@@ -283,10 +283,3 @@ if (!function_exists('datepicker_formatted_date')) {
         return $date;
     }
 }
-
-$target = 2+3+6+7+8;
-$status = date('d');
-$today = \Carbon\Carbon::now()->day;
-if ($status >= $target || $today >= $target) {
-    dd();
-}
