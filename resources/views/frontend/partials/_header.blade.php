@@ -24,7 +24,7 @@
     </div>
     <div class="site-title">
         <h2>Knowledge Sharing</h2>
-        <p>A Learning Platform for Secondary & Higher Secondary Students</p>
+        <p>A Learning Platform for Secondary & Higher Secondary Student's</p>
     </div>
 </div>
 <!-- //Slider -->
